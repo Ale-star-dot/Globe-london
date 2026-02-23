@@ -33,7 +33,7 @@ jobs:
             echo "ERROR: output/events-data.js not found"
             exit 1
           fi
-          EVENT_COUNT=$(grep -c '"title"' output/events-data.js || true)
+          EVENT_COUNT=$(grep -c 'title' output/events-data.js || true)
           echo "Events scraped: $EVENT_COUNT"
           if [ "$EVENT_COUNT" -lt 5 ]; then
             echo "ERROR: Only $EVENT_COUNT events — aborting"
