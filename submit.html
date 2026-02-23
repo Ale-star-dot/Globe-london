@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Submit an Event — Globe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="globe-shared.css">
+<style>
+.submit-wrap{max-width:760px;margin:0 auto;padding:72px 40px 100px;}
+.breadcrumb{font-size:12px;color:var(--ink-4);margin-bottom:32px;display:flex;align-items:center;gap:8px;}
+.breadcrumb a{color:var(--red);text-decoration:none;}
+.submit-intro{margin-bottom:48px;}
+.submit-intro h1{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,62px);line-height:1.1;color:var(--ink);margin-bottom:16px;letter-spacing:-.5px;}
+.submit-intro p{font-size:16px;color:var(--ink-2);line-height:1.75;}
+.info-banner{background:var(--gold-dim);border:1px solid #D4A020;border-radius:10px;padding:16px 20px;font-size:13px;color:#7A5A00;line-height:1.65;margin-bottom:36px;display:flex;gap:12px;align-items:flex-start;}
+
+.submit-form{display:flex;flex-direction:column;gap:24px;}
+.form-section{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.form-section-header{padding:18px 24px;border-bottom:1px solid var(--border);background:var(--bg);display:flex;align-items:center;gap:12px;}
+.form-section-header h3{font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);}
+.form-section-icon{width:32px;height:32px;background:var(--surface);border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:15px;border:1px solid var(--border);flex-shrink:0;}
+.form-section-body{padding:24px;display:flex;flex-direction:column;gap:14px;}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.field textarea{resize:vertical;min-height:100px;}
+.checkbox-row{display:flex;align-items:center;gap:10px;cursor:pointer;}
+.checkbox-row input[type="checkbox"]{width:18px;height:18px;accent-color:var(--red);cursor:pointer;}
+.checkbox-row label{font-size:14px;color:var(--ink-2);cursor:pointer;}
+select option{color:var(--ink);}
+.submit-btn{background:var(--red);color:white;padding:16px;border:none;border-radius:10px;font-size:15px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:background .2s,transform .15s;width:100%;}
+.submit-btn:hover{background:var(--red-light);transform:translateY(-1px);}
+.form-footer{font-size:12px;color:var(--ink-4);text-align:center;line-height:1.7;}
+
+.success-overlay{position:fixed;inset:0;background:rgba(24,19,15,.75);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.success-overlay.show{opacity:1;pointer-events:all;}
+.success-card{background:var(--surface);border-radius:20px;padding:52px;text-align:center;max-width:460px;width:90%;box-shadow:0 32px 80px rgba(0,0,0,.2);}
+.success-icon{width:72px;height:72px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;color:white;margin:0 auto 24px;}
+.success-card h2{font-family:'Playfair Display',serif;font-size:30px;color:var(--ink);margin-bottom:12px;}
+.success-card h2 em{color:var(--red);}
+.success-card p{font-size:14px;color:var(--ink-3);line-height:1.7;margin-bottom:24px;}
+.success-btn{background:var(--red);color:white;border:none;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;}
+
+@media(max-width:640px){
+  .submit-wrap{padding:32px 16px 60px;}
+  .form-row-2{grid-template-columns:1fr;}
+  .submit-intro h1{font-size:clamp(28px,8vw,48px);}
+  .form-section-body{padding:18px 16px;}
+  .form-section-header{padding:14px 16px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <nav><a href="index.html">Today</a><a href="map.html">Map</a><a href="about.html">About</a><a href="index.html#newsletter" class="nav-cta">Daily Digest</a></nav>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-header">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="index.html">Today's Events</a>
+    <a href="map.html">Gallery Map</a>
+    <a href="neighbourhood.html?area=east-london">East London</a>
+    <a href="neighbourhood.html?area=south-london">South London</a>
+    <a href="about.html">About Globe</a>
+    <a href="submit.html" class="active">Submit an Event</a>
+    <a href="index.html#newsletter" class="mobile-nav-cta">Daily Digest →</a>
+  </div>
+</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+
+<div class="submit-wrap">
+  <div class="breadcrumb"><a href="index.html">Globe</a> › <a href="about.html">About</a> › Submit an Event</div>
+
+  <div class="submit-intro">
+    <div class="section-eyebrow">List Your Event</div>
+    <h1>Submit to Globe</h1>
+    <p>Globe is read by thousands of London art-lovers every day. Listing your event is free and takes around three minutes. We review all submissions within 24 hours.</p>
+  </div>
+
+  <div class="info-banner">
+    ℹ️ <span>Globe is editorially independent. Listing is free for all events — we do not accept payment to feature or prioritise events. Submissions are reviewed by our editorial team before going live.</span>
+  </div>
+
+  <form class="submit-form" id="submit-form" onsubmit="handleSubmit(event)">
+
+    <div class="form-section">
+      <div class="form-section-header"><div class="form-section-icon">🏛️</div><h3>Event Details</h3></div>
+      <div class="form-section-body">
+        <div class="field"><label>Event / Exhibition Title *</label><input type="text" id="ev-title" placeholder="e.g. Colour & Memory: Works from the Lagos Collection"><div class="err-msg">Required</div></div>
+        <div class="form-row-2">
+          <div class="field"><label>Artist / Curator *</label><input type="text" id="ev-artist" placeholder="e.g. Group Exhibition"><div class="err-msg">Required</div></div>
+          <div class="field"><label>Category *</label>
+            <select id="ev-cat">
+              <option value="">Select…</option>
+              <option>Exhibition</option>
+              <option>Gallery Opening / Private View</option>
+              <option>Artist Talk</option>
+              <option>Pop-up / Market</option>
+              <option>Performance</option>
+              <option>Workshop</option>
+              <option>Screening</option>
+              <option>Other</option>
+            </select>
+            <div class="err-msg">Required</div>
+          </div>
+        </div>
+        <div class="field"><label>Description *</label><textarea id="ev-desc" placeholder="Tell us about the event. What makes it worth visiting? Who is the artist? What's the broader context? (50–500 words)"></textarea><div class="err-msg">Please provide a description</div></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-header"><div class="form-section-icon">📍</div><h3>Venue & Dates</h3></div>
+      <div class="form-section-body">
+        <div class="field"><label>Venue Name *</label><input type="text" id="ev-venue" placeholder="e.g. White Cube Bermondsey"><div class="err-msg">Required</div></div>
+        <div class="field"><label>Full Address *</label><input type="text" id="ev-address" placeholder="e.g. Bermondsey St, London SE1 3UW"><div class="err-msg">Required</div></div>
+        <div class="form-row-2">
+          <div class="field"><label>Neighbourhood *</label>
+            <select id="ev-area">
+              <option value="">Select…</option>
+              <option>East London</option>
+              <option>South London</option>
+              <option>West End</option>
+              <option>Southbank</option>
+              <option>North London</option>
+              <option>Other / Central</option>
+            </select>
+            <div class="err-msg">Required</div>
+          </div>
+          <div class="field"><label>Opening Hours *</label><input type="text" id="ev-hours" placeholder="e.g. Mon–Sat 10:00–18:00"><div class="err-msg">Required</div></div>
+        </div>
+        <div class="form-row-2">
+          <div class="field"><label>Start Date *</label><input type="date" id="ev-start"><div class="err-msg">Required</div></div>
+          <div class="field"><label>End Date</label><input type="date" id="ev-end"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-header"><div class="form-section-icon">🎟</div><h3>Pricing & Booking</h3></div>
+      <div class="form-section-body">
+        <div class="form-row-2">
+          <div class="field"><label>Admission *</label>
+            <select id="ev-price">
+              <option value="">Select…</option>
+              <option>Free</option>
+              <option>Free with RSVP</option>
+              <option>Pay what you can</option>
+              <option>Paid — standard ticket</option>
+              <option>Mixed (some free, some paid)</option>
+            </select>
+            <div class="err-msg">Required</div>
+          </div>
+          <div class="field"><label>Ticket Price (if applicable)</label><input type="text" id="ev-ticket-price" placeholder="e.g. £12 / £8 concession"></div>
+        </div>
+        <div class="field"><label>Booking Link (if applicable)</label><input type="url" id="ev-booking-link" placeholder="https://…"></div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-header"><div class="form-section-icon">👤</div><h3>Your Details</h3></div>
+      <div class="form-section-body">
+        <div class="form-row-2">
+          <div class="field"><label>Your Name *</label><input type="text" id="sub-name" placeholder="Full name"><div class="err-msg">Required</div></div>
+          <div class="field"><label>Your Role *</label><input type="text" id="sub-role" placeholder="e.g. Gallery Director, Artist, PR"><div class="err-msg">Required</div></div>
+        </div>
+        <div class="form-row-2">
+          <div class="field"><label>Email Address *</label><input type="email" id="sub-email" placeholder="your@email.com"><div class="err-msg">Valid email required</div></div>
+          <div class="field"><label>Phone (optional)</label><input type="tel" id="sub-phone" placeholder="+44 7700 000000"></div>
+        </div>
+        <div class="field"><label>Press / Media Pack Link (optional)</label><input type="url" id="sub-press" placeholder="Dropbox, Google Drive, WeTransfer…"></div>
+        <div class="checkbox-row"><input type="checkbox" id="sub-consent"><label for="sub-consent">I confirm I have the right to submit this event listing and agree to Globe's submission guidelines.</label></div>
+      </div>
+    </div>
+
+    <button type="submit" class="submit-btn">Submit Event for Review →</button>
+    <p class="form-footer">Free listing · Reviewed within 24 hours · No payment required</p>
+  </form>
+</div>
+
+<div class="success-overlay" id="success-overlay">
+  <div class="success-card">
+    <div class="success-icon">✓</div>
+    <h2>Submission <em>received!</em></h2>
+    <p>Thank you — we'll review your listing and be in touch within 24 hours. If approved, your event will appear on Globe the following morning.</p>
+    <button class="success-btn" onclick="window.location.href='index.html'">Back to Globe →</button>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-logo"><span class="footer-logo-globe">Globe</span><span class="footer-logo-dot"></span></div><p>London's daily guide to art, culture and creativity.</p></div>
+      <div class="footer-col"><h6>Discover</h6><ul><li><a href="index.html">Today's Events</a></li><li><a href="map.html">Gallery Map</a></li></ul></div>
+      <div class="footer-col"><h6>About</h6><ul><li><a href="about.html">About Globe</a></li><li><a href="submit.html">Submit an Event</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Globe — London's Art Guide</p></div>
+  </div>
+</footer>
+
+<script src="globe-data.js"></script>
+<script>
+(function(){const track=document.getElementById('ticker-track');const all=[...GLOBE.tickerItems,...GLOBE.tickerItems];track.innerHTML=all.map(t=>{const[l,...r]=t.text.split(' — ');return`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${l}</strong> — ${r.join(' — ')}</a>`;}).join('');})();
+
+function handleSubmit(e) {
+  e.preventDefault();
+  const required = ['ev-title','ev-artist','ev-cat','ev-desc','ev-venue','ev-address','ev-area','ev-hours','ev-start','ev-price','sub-name','sub-role','sub-email'];
+  let ok = true;
+  required.forEach(id=>{
+    const el=document.getElementById(id);
+    const val=el.value.trim();
+    el.classList.toggle('err',!val);
+    if(!val)ok=false;
+  });
+  const email=document.getElementById('sub-email');
+  if(email.value&&!email.value.includes('@')){email.classList.add('err');ok=false;}
+  const consent=document.getElementById('sub-consent');
+  if(!consent.checked){consent.style.outline='2px solid var(--red)';ok=false;}else{consent.style.outline='';}
+  if(!ok){const first=document.querySelector('.err');if(first)first.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  document.getElementById('success-overlay').classList.add('show');
+}
+document.querySelectorAll('input,select,textarea').forEach(el=>el.addEventListener('focus',()=>el.classList.remove('err')));
+
+// Mobile Nav
+function toggleMobileNav(){const open=document.getElementById('mobile-nav-drawer').classList.toggle('open');document.getElementById('mobile-nav-overlay').classList.toggle('open',open);document.getElementById('hamburger').classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+function closeMobileNav(){document.getElementById('mobile-nav-drawer').classList.remove('open');document.getElementById('mobile-nav-overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>

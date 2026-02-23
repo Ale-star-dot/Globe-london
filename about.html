@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Globe — London's Daily Art Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="globe-shared.css">
+<style>
+.about-hero{max-width:900px;margin:0 auto;padding:80px 40px 0;}
+.about-hero h1{font-family:'Playfair Display',serif;font-size:clamp(48px,7vw,96px);line-height:1.03;letter-spacing:-2px;color:var(--ink);margin-bottom:28px;}
+.about-hero h1 em{color:var(--red);font-style:italic;}
+.about-hero .lead{font-size:20px;line-height:1.8;color:var(--ink-2);max-width:700px;margin-bottom:60px;}
+
+/* MANIFESTO */
+.manifesto{background:var(--ink);padding:80px 40px;margin:0;text-align:center;}
+.manifesto h2{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,52px);color:white;line-height:1.2;max-width:800px;margin:0 auto 28px;}
+.manifesto h2 em{color:var(--gold);font-style:italic;}
+.manifesto p{font-size:16px;color:rgba(255,255,255,.55);line-height:1.85;max-width:640px;margin:0 auto;}
+
+/* CONTENT */
+.about-content{max-width:900px;margin:0 auto;padding:80px 40px;}
+.about-section{margin-bottom:72px;}
+.about-section h2{font-family:'Playfair Display',serif;font-size:36px;color:var(--ink);margin-bottom:20px;display:flex;align-items:center;gap:16px;}
+.about-section h2::before{content:'';display:block;width:28px;height:3px;background:var(--red);border-radius:2px;flex-shrink:0;}
+.about-section p{font-size:16px;color:var(--ink-2);line-height:1.85;margin-bottom:16px;}
+.about-section p:last-child{margin-bottom:0;}
+
+/* VALUES */
+.values-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:32px;}
+.value-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 24px;}
+.value-card .v-icon{font-size:28px;margin-bottom:12px;}
+.value-card h4{font-family:'Playfair Display',serif;font-size:18px;color:var(--ink);margin-bottom:8px;}
+.value-card p{font-size:14px;color:var(--ink-3);line-height:1.7;}
+
+/* STATS */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:40px 0;}
+.stat{text-align:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:28px 16px;}
+.stat .num{font-family:'Playfair Display',serif;font-size:48px;font-weight:700;color:var(--red);line-height:1;}
+.stat .label{font-size:12px;color:var(--ink-4);text-transform:uppercase;letter-spacing:1px;margin-top:6px;}
+
+/* TEAM */
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:32px;}
+.team-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;}
+.team-avatar{width:72px;height:72px;border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;font-size:28px;background:var(--surface-2);}
+.team-card h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--ink);margin-bottom:4px;}
+.team-card .role{font-size:12px;color:var(--red);font-weight:600;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
+.team-card p{font-size:13px;color:var(--ink-3);line-height:1.65;}
+
+/* CONTACT */
+.contact-section{background:var(--surface-2);border-radius:16px;padding:52px;margin-top:40px;}
+.contact-section h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--ink);margin-bottom:16px;}
+.contact-section p{font-size:15px;color:var(--ink-2);line-height:1.75;margin-bottom:28px;max-width:520px;}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.contact-item{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 20px;display:flex;align-items:center;gap:14px;text-decoration:none;color:inherit;transition:border-color .2s;}
+.contact-item:hover{border-color:var(--red);}
+.contact-item .c-icon{font-size:20px;}
+.contact-item h5{font-size:14px;font-weight:600;color:var(--ink);}
+.contact-item p{font-size:12px;color:var(--ink-4);margin:0;}
+
+@media(max-width:768px){
+  .values-grid,.team-grid,.contact-grid{grid-template-columns:1fr;}
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .about-hero,.about-content{padding-left:20px;padding-right:20px;}
+  .about-hero{padding-top:48px;}
+  .manifesto{padding:48px 20px;}
+  .contact-section{padding:28px 20px;}
+}
+@media(max-width:480px){
+  .stats-row{grid-template-columns:1fr 1fr;}
+  .about-section h2{font-size:26px;}
+  .contact-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <nav>
+      <a href="index.html">Today</a>
+      <a href="index.html">Exhibitions</a>
+      <a href="map.html">Map</a>
+      <a href="index.html#newsletter" class="nav-cta">Daily Digest</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-header">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="index.html">Today's Events</a>
+    <a href="map.html">Gallery Map</a>
+    <a href="neighbourhood.html?area=east-london">East London</a>
+    <a href="neighbourhood.html?area=south-london">South London</a>
+    <a href="about.html" class="active">About Globe</a>
+    <a href="submit.html">Submit an Event</a>
+    <a href="index.html#newsletter" class="mobile-nav-cta">Daily Digest →</a>
+  </div>
+</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+
+<div class="about-hero">
+  <div class="section-eyebrow">About Globe</div>
+  <h1>London's art scene,<br><em>every single day.</em></h1>
+  <p class="lead">Globe was built on a simple conviction: that London's extraordinary cultural life should be easy to discover, whatever your budget, wherever you live in the city.</p>
+</div>
+
+<div class="manifesto">
+  <h2>Art is not <em>for the few.</em><br>It belongs to the city.</h2>
+  <p>London has more galleries, studios, artist-run spaces and public art than anywhere else on earth. But the information about what's on — and crucially, what's free, what's affordable, what's happening tonight — is scattered, paywalled or just hard to find. Globe changes that.</p>
+</div>
+
+<div class="about-content">
+
+  <div class="about-section reveal">
+    <h2>Our Mission</h2>
+    <p>Globe is London's daily art guide — aggregating, curating and presenting every significant cultural event happening across the capital, updated every morning. We cover everything from blockbuster exhibitions at the Tate and the Royal Academy to one-night gallery openings in Hackney Wick, ceramics markets in King's Cross and artist talks in Peckham.</p>
+    <p>We believe that friction is the enemy of culture. The more difficult it is to find out what's on, book a place or get to an opening, the fewer people will go. Globe removes that friction — for exhibiting artists who need audiences, and for curious Londoners who need to know what's worth their time.</p>
+    <p>We are editorially independent. We do not accept payment to list events or promote exhibitions. Every event on Globe is there because our team believes it is worth your attention.</p>
+  </div>
+
+  <div class="about-section reveal">
+    <h2>What We Cover</h2>
+    <div class="values-grid">
+      <div class="value-card">
+        <div class="v-icon">🏛️</div>
+        <h4>Major Institutions</h4>
+        <p>Tate, V&A, British Museum, Royal Academy, Barbican, Serpentine and every other publicly funded institution in London.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon">🖼️</div>
+        <h4>Commercial Galleries</h4>
+        <p>White Cube, Hauser & Wirth, Gagosian, Victoria Miro and hundreds of independent and mid-size commercial spaces.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon">🎨</div>
+        <h4>Artist-Run Spaces</h4>
+        <p>Project spaces, collectives, open studios and temporary venues — the underground engine of London's art scene.</p>
+      </div>
+      <div class="value-card">
+        <div class="v-icon">🗺️</div>
+        <h4>All Neighbourhoods</h4>
+        <p>From Mayfair to Peckham, Shoreditch to Hammersmith — every postcode, not just the fashionable ones.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section reveal">
+    <h2>By the Numbers</h2>
+    <div class="stats-row">
+      <div class="stat"><div class="num">47</div><div class="label">Events today</div></div>
+      <div class="stat"><div class="num">320+</div><div class="label">Venues listed</div></div>
+      <div class="stat"><div class="num">5</div><div class="label">Areas covered</div></div>
+      <div class="stat"><div class="num">Daily</div><div class="label">Updated</div></div>
+    </div>
+    <p>Globe publishes a fresh guide every morning at 7am. Our automated systems pull from venue websites, gallery press offices and event databases — then our editors verify, curate and enrich every listing before it goes live.</p>
+  </div>
+
+  <div class="about-section reveal">
+    <h2>Our Values</h2>
+    <p><strong>Free always beats paid.</strong> Where an event is free, we say so prominently. We believe cultural access should not be gated by income, and we actively champion free and pay-what-you-can programming.</p>
+    <p><strong>Independent and honest.</strong> We are not funded by galleries or arts organisations. We do not receive advertising from institutions whose events we list. Our editorial judgements are our own.</p>
+    <p><strong>Diversity of practice.</strong> We are committed to covering artists and organisations who reflect London's actual population — in terms of race, gender, background, geography and practice. We actively seek out work by underrepresented artists and communities.</p>
+    <p><strong>Useful, not just beautiful.</strong> Globe is a tool. It should be fast, clear and helpful — helping you decide what to do tonight in thirty seconds, not thirty minutes.</p>
+  </div>
+
+  <div class="about-section reveal">
+    <h2>The Team</h2>
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">👩🏾‍💻</div>
+        <h4>Amara Okafor</h4>
+        <div class="role">Editor & Co-founder</div>
+        <p>Former arts editor at the Guardian. Writes about contemporary painting, decolonial practice and the politics of exhibition-making.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👨🏻‍🎨</div>
+        <h4>Tom Whitfield</h4>
+        <div class="role">Technology & Co-founder</div>
+        <p>Built Globe's listings engine. Previously worked on digital infrastructure at the Serpentine and Somerset House.</p>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">👩🏽‍🔬</div>
+        <h4>Priya Chandran</h4>
+        <div class="role">Listings & Research</div>
+        <p>Manages our relationships with 300+ venues. Former programme coordinator at South London Gallery and Tate Modern.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-section reveal" id="contact">
+    <h2>Get in Touch</h2>
+    <p>Whether you want to submit an event, tell us about a space we've missed, or just say hello — we'd love to hear from you.</p>
+    <div class="contact-grid">
+      <a class="contact-item" href="submit.html">
+        <span class="c-icon">📋</span>
+        <div><h5>Submit an Event</h5><p>List your opening or exhibition on Globe</p></div>
+      </a>
+      <a class="contact-item" href="/cdn-cgi/l/email-protection#a1c9c4cdcdcee1c6cdcec3c48fcdcecfc5cecf">
+        <span class="c-icon">✉️</span>
+        <div><h5><span class="__cf_email__" data-cfemail="cba3aea7a7a48baca7a4a9aee5a7a4a5afa4a5">[email&#160;protected]</span></h5><p>General enquiries and press</p></div>
+      </a>
+      <a class="contact-item" href="/cdn-cgi/l/email-protection#016d687275686f667241666d6e63642f6d6e6f656e6f">
+        <span class="c-icon">🏛️</span>
+        <div><h5><span class="__cf_email__" data-cfemail="731f1a00071a1d140033141f1c11165d1f1c1d171c1d">[email&#160;protected]</span></h5><p>Listings corrections or updates</p></div>
+      </a>
+      <a class="contact-item" href="index.html#newsletter">
+        <span class="c-icon">📬</span>
+        <div><h5>Daily Digest Newsletter</h5><p>Free, every morning at 7am</p></div>
+      </a>
+    </div>
+  </div>
+
+</div><!-- /about-content -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-logo"><span class="footer-logo-globe">Globe</span><span class="footer-logo-dot"></span></div><p>London's daily guide to art, culture and creativity. From major institutions to hidden artist-run spaces — we cover it all.</p></div>
+      <div class="footer-col"><h6>Discover</h6><ul><li><a href="index.html">Today's Events</a></li><li><a href="map.html">Gallery Map</a></li></ul></div>
+      <div class="footer-col"><h6>Neighbourhoods</h6><ul><li><a href="neighbourhood.html?area=east-london">East London</a></li><li><a href="neighbourhood.html?area=south-london">South London</a></li><li><a href="neighbourhood.html?area=west-end">West End</a></li><li><a href="neighbourhood.html?area=southbank">Southbank</a></li><li><a href="neighbourhood.html?area=north-london">North London</a></li></ul></div>
+      <div class="footer-col"><h6>About</h6><ul><li><a href="about.html" class="active">About Globe</a></li><li><a href="submit.html">Submit an Event</a></li><li><a href="#contact">Contact</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Globe — London's Art Guide</p><div class="footer-socials"><a href="#">Instagram</a><a href="#">Privacy</a></div></div>
+  </div>
+</footer>
+
+<script src="globe-data.js"></script>
+<script>
+(function(){const track=document.getElementById('ticker-track');const all=[...GLOBE.tickerItems,...GLOBE.tickerItems];track.innerHTML=all.map(t=

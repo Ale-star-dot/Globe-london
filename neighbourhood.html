@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neighbourhood — Globe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="globe-shared.css">
+<style>
+.area-hero{padding:60px 40px 0;max-width:1400px;margin:0 auto;}
+.breadcrumb{font-size:12px;color:var(--ink-4);margin-bottom:28px;display:flex;align-items:center;gap:8px;}
+.breadcrumb a{color:var(--red);text-decoration:none;}
+.area-hero-inner{display:grid;grid-template-columns:1fr auto;gap:40px;align-items:start;margin-bottom:52px;}
+.area-badge{width:72px;height:72px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:36px;margin-bottom:16px;}
+.area-hero h1{font-family:'Playfair Display',serif;font-size:clamp(40px,5.5vw,72px);line-height:1.06;letter-spacing:-1.5px;color:var(--ink);margin-bottom:10px;}
+.area-tagline{font-size:14px;font-weight:500;color:var(--ink-4);letter-spacing:.5px;margin-bottom:16px;}
+.area-desc{font-size:16px;color:var(--ink-2);line-height:1.75;max-width:600px;}
+.area-stat{text-align:right;}
+.area-stat .big{font-family:'Playfair Display',serif;font-size:80px;line-height:1;font-weight:700;letter-spacing:-3px;}
+.area-stat p{font-size:13px;color:var(--ink-4);margin-top:4px;}
+
+.highlights-strip{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:20px 24px;margin:0 40px 48px;max-width:1320px;margin:0 auto 48px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;}
+.hl-label{font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);flex-shrink:0;}
+.hl-items{display:flex;gap:10px;flex-wrap:wrap;}
+.hl-pill{background:var(--surface-2);border:1px solid var(--border);border-radius:6px;padding:5px 12px;font-size:12px;font-weight:600;color:var(--ink-2);}
+
+.area-content{max-width:1400px;margin:0 auto;padding:0 40px 80px;}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:60px;}
+.no-events{background:var(--surface);border-radius:12px;border:1px solid var(--border);padding:52px;text-align:center;}
+.no-events p{font-size:16px;color:var(--ink-3);}
+
+/* OTHER AREAS */
+.other-areas{margin-top:60px;}
+.other-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.other-card{background:var(--surface);border-radius:12px;border:1px solid var(--border);padding:20px;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s;}
+.other-card:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,.08);}
+.other-card .icon{font-size:24px;margin-bottom:8px;display:block;}
+.other-card h5{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);margin-bottom:4px;}
+.other-card p{font-size:11px;color:var(--ink-4);}
+.other-card .count{font-size:11px;font-weight:700;margin-top:8px;display:inline-block;padding:3px 8px;border-radius:10px;}
+
+@media(max-width:1000px){
+  .area-hero-inner{grid-template-columns:1fr;}
+  .area-stat{text-align:left;}
+  .events-grid{grid-template-columns:1fr 1fr;}
+  .other-grid{grid-template-columns:1fr 1fr;}
+  .area-hero,.area-content{padding-left:24px;padding-right:24px;}
+  .highlights-strip{margin:0 24px 40px;}
+}
+@media(max-width:640px){
+  .area-hero{padding:28px 16px 0;}
+  .area-content{padding:0 16px 60px;}
+  .events-grid{grid-template-columns:1fr;}
+  .other-grid{grid-template-columns:1fr 1fr;}
+  .highlights-strip{margin:0 16px 32px;padding:16px;}
+  .area-stat .big{font-size:56px;}
+  .area-title{font-size:clamp(40px,12vw,72px);}
+}
+@media(max-width:400px){
+  .other-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <nav>
+      <a href="index.html">Today</a>
+      <a href="index.html">Exhibitions</a>
+      <a href="map.html">Map</a>
+      <a href="index.html#newsletter" class="nav-cta">Daily Digest</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-header">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="index.html" class="active">Today's Events</a>
+    <a href="map.html" class="active">Gallery Map</a>
+    <a href="neighbourhood.html?area=east-london" class="active">East London</a>
+    <a href="neighbourhood.html?area=south-london" class="active">South London</a>
+    <a href="about.html">About Globe</a>
+    <a href="submit.html">Submit an Event</a>
+    <a href="index.html#newsletter" class="mobile-nav-cta">Daily Digest →</a>
+  </div>
+</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+
+<div class="area-hero">
+  <div class="breadcrumb"><a href="index.html">Globe</a> › <a href="index.html">Neighbourhoods</a> › <span id="bc-area">Loading…</span></div>
+  <div class="area-hero-inner">
+    <div>
+      <div class="area-badge" id="area-badge">◎</div>
+      <div class="section-eyebrow" id="area-eyebrow">London Art</div>
+      <h1 id="area-title">Loading…</h1>
+      <div class="area-tagline" id="area-tagline"></div>
+      <p class="area-desc" id="area-desc"></p>
+    </div>
+    <div class="area-stat">
+      <div class="big" id="area-count" style="color:var(--red);">0</div>
+      <p>events today</p>
+    </div>
+  </div>
+</div>
+
+<div class="highlights-strip" id="highlights-strip" style="padding:20px 24px;background:var(--surface);border:1px solid var(--border);border-radius:12px;max-width:1320px;margin:0 auto 48px;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+  <span class="hl-label">Key Spaces</span>
+  <div class="hl-items" id="hl-items"></div>
+</div>
+
+<div class="area-content">
+  <div class="section-header reveal">
+    <div class="section-header-left"><h2 style="font-family:'Playfair Display',serif;font-size:30px;color:var(--ink);display:flex;align-items:center;gap:14px;"><span style="display:block;width:22px;height:3px;background:var(--red);border-radius:2px;flex-shrink:0;"></span>Events in this area</h2></div>
+  </div>
+  <div class="events-grid" id="area-events-grid"></div>
+
+  <div class="other-areas">
+    <div class="section-header reveal"><div class="section-header-left"><h2 style="font-family:'Playfair Display',serif;font-size:30px;color:var(--ink);display:flex;align-items:center;gap:14px;"><span style="display:block;width:22px;height:3px;background:var(--red);border-radius:2px;flex-shrink:0;"></span>Explore other areas</h2></div></div>
+    <div class="other-grid" id="other-areas-grid"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-logo"><span class="footer-logo-globe">Globe</span><span class="footer-logo-dot"></span></div><p>London's daily guide to art, culture and creativity.</p></div>
+      <div class="footer-col"><h6>Discover</h6><ul><li><a href="index.html">Today's Events</a></li><li><a href="map.html">Gallery Map</a></li></ul></div>
+      <div class="footer-col"><h6>Neighbourhoods</h6><ul><li><a href="neighbourhood.html?area=east-london">East London</a></li><li><a href="neighbourhood.html?area=south-london">South London</a></li><li><a href="neighbourhood.html?area=west-end">West End</a></li><li><a href="neighbourhood.html?area=southbank">Southbank</a></li><li><a href="neighbourhood.html?area=north-london">North London</a></li></ul></div>
+      <div class="footer-col"><h6>About</h6><ul><li><a href="about.html">About Globe</a></li><li><a href="submit.html">Submit an Event</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Globe — London's Art Guide</p><div class="footer-socials"><a href="#">Instagram</a><a href="#">Privacy</a></div></div>
+  </div>
+</footer>
+
+<script src="globe-data.js"></script>
+<script>
+// Ticker
+(function(){const track=document.getElementById('ticker-track');const all=[...GLOBE.tickerItems,...GLOBE.tickerItems];track.innerHTML=all.map(t=>{const[l,...r]=t.text.split(' — ');return`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${l}</strong> — ${r.join(' — ')}</a>`;}).join('');})();
+
+const params = new URLSearchParams(location.search);
+const areaKey = params.get('area') || 'east-london';
+const area    = GLOBE.neighbourhoods[areaKey];
+
+if (area) {
+  document.title = area.name + ' — Globe';
+  document.getElementById('bc-area').textContent  = area.name;
+  document.getElementById('area-badge').textContent = area.icon;
+  document.getElementById('area-badge').style.background = area.color + '22';
+  document.getElementById('area-eyebrow').textContent = 'London Art Guide';
+  document.getElementById('area-title').textContent    = area.name;
+  document.getElementById('area-tagline').textContent  = area.tagline;
+  document.getElementById('area-desc').textContent     = area.description;
+  document.getElementById('area-count').style.color    = area.color;
+
+  // Highlights
+  document.getElementById('hl-items').innerHTML = area.highlights.map(h=>`<span class="hl-pill">${h}</span>`).join('');
+
+  // Area events
+  const areaEvents = GLOBE.events.filter(e => e.neighbourhood === areaKey);
+  document.getElementById('area-count').textContent = areaEvents.length || '–';
+
+  if (areaEvents.length) {
+    document.getElementById('area-events-grid').innerHTML = areaEvents.map(ev=>`
+      <a class="event-card reveal" href="event.html?id=${ev.id}">
+        <div class="event-card-bar" style="background:${ev.color};"></div>
+        <div class="event-card-body">
+          <span class="event-tag ${ev.tagClass||'tag-opening'}">${ev.tag}</span>
+          <h4>${ev.title}</h4>
+          <div class="venue">${ev.venue}</div>
+          <p class="desc">${ev.description?ev.description.replace(/<[^>]+>/g,'').substring(0,90)+'…':''}</p>
+          <div class="event-card-footer">
+            <span class="event-time">${ev.time}</span>
+            <span class="event-price">${ev.priceDisplay}</span>
+            <span class="book-btn">${ev.bookingType==='free'?'Info →':'Book →'}</span>
+          </div>
+        </div>
+      </a>`).join('');
+  } else {
+    document.getElementById('area-events-grid').innerHTML = `<div class="no-events" style="grid-column:1/-1;"><p>No events listed for this area right now.<br>Check back soon — we update daily.</p></div>`;
+  }
+
+  // Other areas
+  const others = Object.entries(GLOBE.neighbourhoods).filter(([k])=>k!==areaKey);
+  document.getElementById('other-areas-grid').innerHTML = others.map(([key,a])=>`
+    <a class="other-card" href="neighbourhood.html?area=${key}" style="border-color:${a.color}22;">
+      <span class="icon">${a.icon}</span>
+      <h5>${a.name}</h5>
+      <p>${a.tagline.split(' · ')[0]}</p>
+      <span class="count" style="background:${a.color}22;color:${a.color};">${GLOBE.events.filter(e=>e.neighbourhood===key).length} events</span>
+    </a>`).join('');
+}
+
+// Scroll reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+setTimeout(()=>document.querySelectorAll('.reveal:not(.visible)').forEach(el=>io.observe(el)),100);
+
+// Mobile Nav
+function toggleMobileNav(){const open=document.getElementById('mobile-nav-drawer').classList.toggle('open');document.getElementById('mobile-nav-overlay').classList.toggle('open',open);document.getElementById('hamburger').classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+function closeMobileNav(){document.getElementById('mobile-nav-drawer').classList.remove('open');document.getElementById('mobile-nav-overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>

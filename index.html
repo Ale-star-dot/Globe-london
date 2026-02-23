@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Globe — London's Daily Art Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="globe-shared.css">
+<style>
+/* INDEX-SPECIFIC */
+.hero{max-width:1400px;margin:0 auto;padding:72px 40px 56px;display:grid;grid-template-columns:1fr 420px;gap:64px;align-items:center;}
+.hero-text h1{font-family:'Playfair Display',serif;font-size:clamp(44px,5.5vw,74px);line-height:1.07;color:var(--ink);margin-bottom:20px;letter-spacing:-1px;}
+.hero-text h1 em{color:var(--red);font-style:italic;}
+.hero-text p{font-size:16px;line-height:1.75;color:var(--ink-2);max-width:480px;margin-bottom:34px;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;}
+.featured-card{background:var(--surface);border-radius:14px;overflow:hidden;border:1px solid var(--border);box-shadow:0 8px 40px rgba(0,0,0,.08);text-decoration:none;display:block;transition:transform .22s,box-shadow .22s;}
+.featured-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,0,0,.14);}
+.featured-card-img{width:100%;height:256px;background:linear-gradient(145deg,#18130F 0%,#8A0B1E 40%,#C8102E 70%,#E8354F 100%);position:relative;display:flex;align-items:flex-end;padding:20px;overflow:hidden;}
+.featured-card-img::before{content:'◎';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:120px;color:rgba(255,255,255,.07);pointer-events:none;}
+.featured-badge{background:var(--gold);color:var(--ink);padding:5px 12px;border-radius:4px;font-size:10px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;}
+.featured-card-body{padding:22px 24px;}
+.featured-card-body h3{font-family:'Playfair Display',serif;font-size:20px;color:var(--ink);margin-bottom:8px;line-height:1.3;}
+.featured-card-meta{display:flex;gap:14px;font-size:12px;color:var(--ink-3);margin-bottom:10px;flex-wrap:wrap;}
+.featured-card-body p{font-size:13px;color:var(--ink-3);line-height:1.65;}
+
+/* SPONSORED */
+.sponsored-wrap{max-width:1400px;margin:0 auto;padding:0 40px 56px;}
+.sponsored-banner{background:var(--ink);border-radius:12px;padding:20px 28px;display:flex;align-items:center;gap:20px;position:relative;overflow:hidden;text-decoration:none;}
+.sponsored-banner::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--red);}
+.sponsored-badge{background:var(--red);color:white;font-size:9px;font-weight:800;letter-spacing:1.5px;text-transform:uppercase;padding:4px 9px;border-radius:3px;flex-shrink:0;}
+.sponsored-text{flex:1;}
+.sponsored-text strong{display:block;font-family:'Playfair Display',serif;font-size:16px;color:white;margin-bottom:2px;}
+.sponsored-text span{font-size:12px;color:rgba(255,255,255,.5);}
+.sponsored-cta-btn{background:var(--red);color:white;font-size:13px;font-weight:600;padding:10px 20px;border-radius:5px;flex-shrink:0;transition:background .2s;white-space:nowrap;}
+.sponsored-banner:hover .sponsored-cta-btn{background:var(--red-light);}
+
+/* MAIN */
+.main-content{max-width:1400px;margin:0 auto;padding:0 40px 90px;}
+.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;}
+.section-header-left h2{font-family:'Playfair Display',serif;font-size:30px;color:var(--ink);display:flex;align-items:center;gap:14px;}
+.section-header-left h2::before{content:'';display:block;width:22px;height:3px;background:var(--red);border-radius:2px;flex-shrink:0;}
+.see-all{font-size:13px;color:var(--red);text-decoration:none;font-weight:500;border-bottom:1px solid transparent;transition:border-color .2s;}
+.see-all:hover{border-color:var(--red);}
+
+/* EVENTS GRID */
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:72px;}
+
+/* EXHIBITIONS LIST */
+.exhibitions-section{margin-bottom:72px;}
+.exhibitions-list{display:flex;flex-direction:column;gap:1px;background:var(--border);border-radius:12px;overflow:hidden;border:1px solid var(--border);}
+.exhibition-row{background:var(--surface);padding:20px 24px;display:grid;grid-template-columns:70px 1fr auto auto;gap:22px;align-items:center;cursor:pointer;text-decoration:none;color:inherit;transition:background .15s;}
+.exhibition-row:hover{background:#FDF8F6;}
+.exhibition-days{text-align:center;}
+.exhibition-days .num{display:block;font-family:'Playfair Display',serif;font-size:26px;color:var(--red);line-height:1;}
+.exhibition-days .label{font-size:10px;color:var(--ink-4);text-transform:uppercase;letter-spacing:.8px;}
+.exhibition-info h4{font-family:'Playfair Display',serif;font-size:17px;color:var(--ink);margin-bottom:3px;}
+.exhibition-info .artist{font-size:12px;color:var(--ink-3);margin-bottom:2px;}
+.exhibition-info .gallery-name{font-size:12px;color:var(--red);font-weight:600;}
+.exhibition-dates{text-align:right;font-size:12px;color:var(--ink-3);white-space:nowrap;}
+.exhibition-dates strong{display:block;color:var(--ink-2);font-size:13px;margin-bottom:2px;}
+.exhibition-arrow{font-size:18px;color:var(--ink-4);transition:transform .2s,color .2s;}
+.exhibition-row:hover .exhibition-arrow{transform:translateX(4px);color:var(--red);}
+
+/* TWO COL */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:40px;margin-bottom:72px;}
+
+/* GALLERY CARDS */
+.gallery-cards{display:flex;flex-direction:column;gap:14px;}
+.gallery-card{background:var(--surface);border-radius:10px;border:1px solid var(--border);padding:18px 20px;display:flex;align-items:center;gap:16px;cursor:pointer;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s;}
+.gallery-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.gallery-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0;}
+.gallery-card h5{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);margin-bottom:3px;}
+.gallery-card .gallery-type{font-size:11px;color:var(--ink-4);text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.gallery-card .gallery-status{font-size:12px;font-weight:600;}
+
+/* POPUP CARDS */
+.popup-cards{display:flex;flex-direction:column;gap:14px;}
+.popup-card{background:var(--surface);border-radius:10px;border:1px solid var(--border);overflow:hidden;display:flex;cursor:pointer;text-decoration:none;color:inherit;transition:border-color .2s,box-shadow .2s;}
+.popup-card:hover{border-color:var(--red);box-shadow:0 4px 20px rgba(0,0,0,.08);}
+.popup-card > div:first-child{width:5px;flex-shrink:0;}
+.popup-card-content{padding:16px 18px;flex:1;display:flex;justify-content:space-between;gap:16px;}
+.popup-card-main h5{font-family:'Playfair Display',serif;font-size:14px;color:var(--ink);margin-bottom:4px;}
+.popup-card-main .location{font-size:11px;color:var(--red);font-weight:600;margin-bottom:6px;}
+.popup-card-main p{font-size:12px;color:var(--ink-3);line-height:1.5;}
+.popup-card-aside{display:flex;flex-direction:column;align-items:flex-end;gap:8px;flex-shrink:0;}
+.popup-days-left{font-size:10px;font-weight:700;padding:4px 9px;border-radius:4px;text-transform:uppercase;letter-spacing:.5px;white-space:nowrap;}
+.popup-pills{display:flex;flex-direction:column;gap:4px;align-items:flex-end;}
+.pill{font-size:11px;padding:3px 8px;border-radius:3px;font-weight:600;}
+
+/* NEIGHBOURHOOD SECTION */
+.neighbourhood-section{margin-bottom:72px;}
+.neighbourhood-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;}
+.neighbourhood-card{background:var(--surface);border-radius:12px;border:1px solid var(--border);padding:22px 18px;text-align:center;cursor:pointer;text-decoration:none;color:inherit;transition:transform .2s,box-shadow .2s,border-color .2s;}
+.neighbourhood-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.09);border-color:currentColor;}
+.neighbourhood-card .n-icon{font-size:28px;margin-bottom:10px;display:block;}
+.neighbourhood-card h5{font-family:'Playfair Display',serif;font-size:15px;color:var(--ink);margin-bottom:4px;}
+.neighbourhood-card p{font-size:11px;color:var(--ink-4);line-height:1.5;}
+.neighbourhood-card .n-count{font-size:11px;font-weight:700;margin-top:8px;padding:3px 8px;border-radius:10px;display:inline-block;}
+
+/* NEWSLETTER */
+.newsletter-section{background:var(--ink);border-radius:16px;padding:52px 56px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:0;}
+.newsletter-text h2{font-family:'Playfair Display',serif;font-size:clamp(28px,3vw,40px);color:white;line-height:1.2;margin-bottom:14px;}
+.newsletter-text h2 em{color:var(--gold);font-style:italic;}
+.newsletter-text p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.75;}
+.newsletter-form{display:flex;flex-direction:column;gap:12px;}
+.newsletter-form input{padding:13px 16px;border:1.5px solid rgba(255,255,255,.15);border-radius:8px;background:rgba(255,255,255,.07);color:white;font-size:14px;font-family:'DM Sans',sans-serif;transition:border-color .2s;outline:none;}
+.newsletter-form input:focus{border-color:var(--gold);}
+.newsletter-form input::placeholder{color:rgba(255,255,255,.3);}
+.newsletter-form input.nl-err{border-color:var(--red)!important;}
+.newsletter-submit{background:var(--gold);color:var(--ink);padding:14px;border:none;border-radius:8px;font-size:14px;font-weight:700;font-family:'DM Sans',sans-serif;cursor:pointer;transition:opacity .2s,transform .15s;}
+.newsletter-submit:hover{opacity:.9;transform:translateY(-1px);}
+.form-note{font-size:11px;color:rgba(255,255,255,.3);text-align:center;}
+
+/* PAGE SECTIONS (filter views) */
+.page-hero{max-width:1400px;margin:0 auto;padding:60px 40px 48px;}
+.page-hero-tag{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--red);display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.page-hero-tag::before{content:'';width:22px;height:2px;background:var(--red);display:block;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,88px);line-height:1.05;letter-spacing:-2px;color:var(--ink);margin-bottom:14px;}
+.page-hero p{font-size:16px;color:var(--ink-3);line-height:1.7;max-width:540px;}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fade-in{animation:fadeUp .4s ease both;}
+
+@media(max-width:1000px){
+  .hero{grid-template-columns:1fr;gap:40px;padding:40px 24px 36px;}
+  .events-grid{grid-template-columns:1fr 1fr;}
+  .two-col{grid-template-columns:1fr;}
+  .neighbourhood-grid{grid-template-columns:repeat(3,1fr);}
+  .newsletter-section{grid-template-columns:1fr;padding:40px 28px;}
+  .main-content{padding:0 24px 60px;}
+  .sponsored-wrap{padding:0 24px 48px;}
+  .exhibition-row{grid-template-columns:60px 1fr;}
+  .exhibition-dates,.exhibition-arrow{display:none;}
+}
+@media(max-width:640px){
+  .hero{padding:24px 16px 20px;gap:24px;}
+  .hero-text h1{font-size:clamp(36px,10vw,52px);line-height:1.05;}
+  .hero-text p{font-size:15px;margin-bottom:24px;}
+  .hero-actions{flex-direction:column;gap:10px;}
+  .hero-actions a{text-align:center;}
+  .featured-card-img{height:180px;}
+  .events-grid{grid-template-columns:1fr;}
+  .neighbourhood-grid{grid-template-columns:1fr 1fr;}
+  .main-content{padding:0 16px 48px;}
+  .sponsored-wrap{padding:0 16px 36px;}
+  .sponsored-banner{flex-wrap:wrap;gap:12px;padding:16px 18px;}
+  .sponsored-cta-btn{width:100%;text-align:center;}
+  .newsletter-section{padding:32px 20px;border-radius:12px;gap:28px;}
+  .newsletter-form input{font-size:16px;} /* prevent iOS zoom */
+  .exhibition-row{padding:14px 16px;}
+  .section-header{flex-direction:column;align-items:flex-start;gap:8px;margin-bottom:20px;}
+  .page-hero{padding:32px 16px 24px;}
+  .page-hero h1{font-size:clamp(40px,11vw,64px);}
+  .gallery-card,.popup-card{min-height:72px;}
+  .popup-card-aside{flex-direction:row;align-items:center;gap:6px;flex-wrap:wrap;justify-content:flex-end;}
+}
+@media(max-width:400px){
+  .neighbourhood-grid{grid-template-columns:1fr;}
+  .events-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <nav>
+      <a href="#" data-filter="today" class="active" id="nav-today">Today</a>
+      <a href="#" data-filter="exhibitions" id="nav-exhibitions">Exhibitions</a>
+      <a href="#" data-filter="galleries" id="nav-galleries">Galleries</a>
+      <a href="#" data-filter="popups" id="nav-popups">Pop-ups</a>
+      <a href="map.html">Map</a>
+      <a href="#newsletter" class="nav-cta">Daily Digest</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-header">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="#" data-filter="today" onclick="closeMobileNav()">Today's Events</a>
+    <a href="#" data-filter="exhibitions" onclick="closeMobileNav()">Exhibitions</a>
+    <a href="#" data-filter="galleries" onclick="closeMobileNav()">Galleries</a>
+    <a href="#" data-filter="popups" onclick="closeMobileNav()">Pop-ups</a>
+    <a href="map.html">Gallery Map</a>
+    <a href="neighbourhood.html?area=east-london">East London</a>
+    <a href="neighbourhood.html?area=south-london">South London</a>
+    <a href="neighbourhood.html?area=west-end">West End</a>
+    <a href="about.html">About Globe</a>
+    <a href="#newsletter" class="mobile-nav-cta" onclick="closeMobileNav()">Daily Digest →</a>
+  </div>
+</div>
+
+<!-- SCROLLING TICKER -->
+<div class="ticker-wrap">
+  <div class="ticker-track" id="ticker-track"></div>
+</div>
+
+<!-- TODAY VIEW -->
+<div id="view-today" class="fade-in">
+  <section class="hero">
+    <div class="hero-text">
+      <div class="section-eyebrow">London's Art Scene</div>
+      <h1>Every opening.<br>Every <em>day.</em></h1>
+      <p>Globe brings together every exhibition, gallery event and pop-up happening across London — curated daily so you never miss a moment that matters.</p>
+      <div class="hero-actions">
+        <a href="neighbourhood.html?area=east-london" class="btn-primary">Browse by Area</a>
+        <a href="map.html" class="btn-secondary">Explore the Map →</a>
+      </div>
+    </div>
+    <a class="featured-card" href="event.html?id=solastalgia">
+      <div class="featured-card-img"><span class="featured-badge">✦ Featured Tonight</span></div>
+      <div class="featured-card-body">
+        <h3>Private View: Solastalgia</h3>
+        <div class="featured-card-meta"><span>📍 White Cube Bermondsey</span><span>🗓 Tonight 18:00</span></div>
+        <p>Cecily Brown's new body of work examining climate grief through large-scale gestural painting. RSVP required.</p>
+      </div>
+    </a>
+  </section>
+
+  <div class="sponsored-wrap">
+    <a class="sponsored-banner reveal" href="event.html?id=kusama-infinity">
+      <span class="sponsored-badge">Sponsored</span>
+      <div class="sponsored-text">
+        <strong>Yayoi Kusama: Infinity Mirrors — Tate Modern, opening 1 March</strong>
+        <span>The most anticipated exhibition of the year. Advance tickets selling fast.</span>
+      </div>
+      <span class="sponsored-cta-btn">Book Tickets →</span>
+    </a>
+  </div>
+
+  <div class="main-content">
+
+    <!-- TODAY'S EVENTS -->
+    <div class="section-header reveal">
+      <div class="section-header-left"><h2>Today's Events</h2></div>
+      <a href="#" data-filter="all-today" class="see-all">See all 47 →</a>
+    </div>
+    <div class="events-grid" id="today-events-grid"></div>
+
+    <!-- UPCOMING EXHIBITIONS -->
+    <section class="exhibitions-section reveal" id="today-exhibitions">
+      <div class="section-header"><div class="section-header-left"><h2>Upcoming Exhibitions</h2></div><a href="#" data-filter="exhibitions" class="see-all">Full calendar →</a></div>
+      <div class="exhibitions-list" id="exhibitions-list-today"></div>
+    </section>
+
+    <!-- GALLERY + POPUPS -->
+    <div class="two-col">
+      <section id="galleries-section">
+        <div class="section-header reveal"><div class="section-header-left"><h2>Gallery Spotlights</h2></div><a href="#" data-filter="galleries" class="see-all">All galleries →</a></div>
+        <div class="gallery-cards">
+          <a class="gallery-card reveal r1" href="event.html?id=lagos-collection">
+            <div class="gallery-icon" style="background:var(--red-dim);">🏛️</div>
+            <div><div class="gallery-type">Major Institution</div><h5>Barbican Gallery</h5><div class="gallery-status" style="color:var(--red);">● Open Now · Colour & Memory</div></div>
+          </a>
+          <a class="gallery-card reveal r2" href="event.html?id=entangled-pasts">
+            <div class="gallery-icon" style="background:var(--green-dim);">🎨</div>
+            <div><div class="gallery-type">Royal Academy</div><h5>Entangled Pasts</h5><div class="gallery-status" style="color:var(--green);">● Closing 3 Mar · £22</div></div>
+          </a>
+          <a class="gallery-card reveal r3" href="event.html?id=solastalgia">
+            <div class="gallery-icon" style="background:var(--gold-dim);">◽</div>
+            <div><div class="gallery-type">Commercial Gallery</div><h5>White Cube Bermondsey</h5><div class="gallery-status" style="color:var(--gold);">● Opening Tonight · Solastalgia</div></div>
+          </a>
+          <a class="gallery-card reveal r4" href="event.html?id=photography-now">
+            <div class="gallery-icon" style="background:var(--blue-dim);">📷</div>
+            <div><div class="gallery-type">Photography Gallery</div><h5>The Photographers' Gallery</h5><div class="gallery-status" style="color:var(--blue);">● Opens 26 Mar · Free</div></div>
+          </a>
+        </div>
+      </section>
+
+      <section id="popups-section">
+        <div class="section-header reveal"><div class="section-header-left"><h2>Pop-ups & Markets</h2></div><a href="#" data-filter="popups" class="see-all">See all →</a></div>
+        <div class="popup-cards">
+          <a class="popup-card reveal r1" href="event.html?id=zine-fair">
+            <div style="background:var(--red);"></div>
+            <div class="popup-card-content">
+              <div class="popup-card-main"><h5>The Zine Fair London</h5><div class="location">📍 Rich Mix, Shoreditch</div><p>200+ publishers and risograph printers. Live screenprinting all day.</p></div>
+              <div class="popup-card-aside"><span class="popup-days-left" style="background:var(--red-dim);color:var(--red);">This Weekend</span><div class="popup-pills"><span class="pill" style="background:var(--green-dim);color:var(--green);">Sat–Sun</span><span class="pill" style="background:var(--surface-2);color:var(--ink-3);">Free</span></div></div>
+            </div>
+          </a>
+          <a class="popup-card reveal r2" href="event.html?id=ceramics-market">
+            <div style="background:var(--green);"></div>
+            <div class="popup-card-content">
+              <div class="popup-card-main"><h5>Ceramics & Clay Market</h5><div class="location">📍 Coal Drops Yard, King's Cross</div><p>40 ceramic artists, handmade vessels and sculpture.</p></div>
+              <div class="popup-card-aside"><span class="popup-days-left" style="background:var(--green-dim);color:var(--green);">3 Days Left</span><div class="popup-pills"><span class="pill" style="background:var(--green-dim);color:var(--green);">10–18</span><span class="pill" style="background:var(--surface-2);color:var(--ink-3);">£2</span></div></div>
+            </div>
+          </a>
+          <a class="popup-card reveal r3" href="event.html?id=fold-photography">
+            <div style="background:var(--purple);"></div>
+            <div class="popup-card-content">
+              <div class="popup-card-main"><h5>FOLD Gallery Popup: Photography</h5><div class="location">📍 Exmouth Market, Clerkenwell</div><p>Emerging lens-based artists, one week only.</p></div>
+              <div class="popup-card-aside"><span class="popup-days-left" style="background:var(--purple-dim);color:var(--purple);">Opens Tomorrow</span><div class="popup-pills"><span class="pill" style="background:var(--purple-dim);color:var(--purple);">Fri–Sun</span><span class="pill" style="background:var(--surface-2);color:var(--ink-3);">Free</span></div></div>
+            </div>
+          </a>
+          <a class="popup-card reveal r4" href="event.html?id=art-book-fair">
+            <div style="background:var(--gold);"></div>
+            <div class="popup-card-content">
+              <div class="popup-card-main"><h5>Art Book Fair — Whitechapel</h5><div class="location">📍 Whitechapel Gallery, E1</div><p>Rare and independent art books from 80+ dealers worldwide.</p></div>
+              <div class="popup-card-aside"><span class="popup-days-left" style="background:var(--gold-dim);color:#9A6800;">Next Week</span><div class="popup-pills"><span class="pill" style="background:var(--gold-dim);color:#9A6800;">Sat 28 Feb</span><span class="pill" style="background:var(--surface-2);color:var(--ink-3);">£5</span></div></div>
+            </div>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- NEIGHBOURHOODS -->
+    <section class="neighbourhood-section">
+      <div class="section-header reveal"><div class="section-header-left"><h2>By Neighbourhood</h2></div></div>
+      <div class="neighbourhood-grid">
+        <a class="neighbourhood-card reveal r1" href="neighbourhood.html?area=east-london" style="color:var(--red);">
+          <span class="n-icon">🔴</span><h5>East London</h5><p>Shoreditch · Hackney · Whitechapel</p><span class="n-count" style="background:var(--red-dim);color:var(--red);">18 events</span>
+        </a>
+        <a class="neighbourhood-card reveal r2" href="neighbourhood.html?area=south-london" style="color:var(--green);">
+          <span class="n-icon">🟢</span><h5>South London</h5><p>Peckham · Bermondsey · Brixton</p><span class="n-count" style="background:var(--green-dim);color:var(--green);">14 events</span>
+        </a>
+        <a class="neighbourhood-card reveal r3" href="neighbourhood.html?area=west-end" style="color:var(--blue);">
+          <span class="n-icon">🔵</span><h5>West End</h5><p>Mayfair · Soho · Fitzrovia</p><span class="n-count" style="background:var(--blue-dim);color:var(--blue);">11 events</span>
+        </a>
+        <a class="neighbourhood-card reveal r4" href="neighbourhood.html?area=southbank" style="color:var(--gold);">
+          <span class="n-icon">🟡</span><h5>Southbank</h5><p>Bankside · Waterloo · Borough</p><span class="n-count" style="background:var(--gold-dim);color:#9A6800;">9 events</span>
+        </a>
+        <a class="neighbourhood-card reveal r5" href="neighbourhood.html?area=north-london" style="color:var(--purple);">
+          <span class="n-icon">🟣</span><h5>North London</h5><p>King's Cross · Islington · Camden</p><span class="n-count" style="background:var(--purple-dim);color:var(--purple);">7 events</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section reveal" id="newsletter">
+      <div class="newsletter-text">
+        <h2>Never miss a<br><em>London opening.</em></h2>
+        <p>Get the Globe daily digest every morning — today's events, this week's openings and hidden gems, curated just for you. Free, always.</p>
+      </div>
+      <div class="newsletter-form">
+        <input type="text" id="nl-name" placeholder="Your full name *">
+        <input type="email" id="nl-email" placeholder="your@email.com *">
+        <input type="text" id="nl-postcode" placeholder="London postcode (e.g. E1 6LA) *">
+        <button class="newsletter-submit" id="nl-submit">Subscribe to the Daily Digest →</button>
+        <p class="form-note">Free · No spam · Unsubscribe any time</p>
+      </div>
+    </section>
+
+  </div><!-- /main-content -->
+</div><!-- /view-today -->
+
+<!-- EXHIBITIONS VIEW -->
+<div id="view-exhibitions" style="display:none;" class="fade-in">
+  <div class="page-hero">
+    <div class="page-hero-tag">Showing Now</div>
+    <h1 class="page-title" style="font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,88px);line-height:1.05;letter-spacing:-2px;color:var(--ink);margin-bottom:14px;">Exhibitions.</h1>
+    <p style="font-size:16px;color:var(--ink-3);line-height:1.7;max-width:540px;">Every major show in London — from blockbusters to intimate gallery programmes.</p>
+  </div>
+  <div class="main-content"><div class="exhibitions-list" id="exhibitions-list-full" style="margin-bottom:72px;"></div></div>
+</div>
+
+<!-- GALLERIES VIEW -->
+<div id="view-galleries" style="display:none;" class="fade-in">
+  <div class="page-hero">
+    <div class="page-hero-tag">Gallery Openings</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,88px);line-height:1.05;letter-spacing:-2px;color:var(--ink);margin-bottom:14px;">Galleries.</h1>
+    <p style="font-size:16px;color:var(--ink-3);line-height:1.7;max-width:540px;">London's finest gallery spaces — their latest shows and opening times.</p>
+  </div>
+  <div class="main-content"><div class="events-grid" id="galleries-grid" style="margin-bottom:72px;"></div></div>
+</div>
+
+<!-- POPUPS VIEW -->
+<div id="view-popups" style="display:none;" class="fade-in">
+  <div class="page-hero">
+    <div class="page-hero-tag">Markets & Pop-ups</div>
+    <h1 style="font-family:'Playfair Display',serif;font-size:clamp(48px,6vw,88px);line-height:1.05;letter-spacing:-2px;color:var(--ink);margin-bottom:14px;">Pop-ups.</h1>
+    <p style="font-size:16px;color:var(--ink-3);line-height:1.7;max-width:540px;">Temporary shows, markets and open studios — the ephemeral best of London.</p>
+  </div>
+  <div class="main-content"><div class="events-grid" id="popups-grid" style="margin-bottom:72px;"></div></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo"><span class="footer-logo-globe">Globe</span><span class="footer-logo-dot"></span></div>
+        <p>London's daily guide to art, culture and creativity. From major institutions to hidden artist-run spaces — we cover it all.</p>
+      </div>
+      <div class="footer-col">
+        <h6>Discover</h6>
+        <ul>
+          <li><a href="#" data-filter="today">Today's Events</a></li>
+          <li><a href="#" data-filter="exhibitions">Exhibitions</a></li>
+          <li><a href="map.html">Gallery Map</a></li>
+          <li><a href="#" data-filter="popups">Pop-ups</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>Neighbourhoods</h6>
+        <ul>
+          <li><a href="neighbourhood.html?area=east-london">East London</a></li>
+          <li><a href="neighbourhood.html?area=south-london">South London</a></li>
+          <li><a href="neighbourhood.html?area=west-end">West End</a></li>
+          <li><a href="neighbourhood.html?area=southbank">Southbank</a></li>
+          <li><a href="neighbourhood.html?area=north-london">North London</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h6>About</h6>
+        <ul>
+          <li><a href="about.html">About Globe</a></li>
+          <li><a href="submit.html">Submit an Event</a></li>
+          <li><a href="about.html#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Globe — London's Art Guide</p>
+      <div class="footer-socials"><a href="#">Instagram</a><a href="#newsletter">Newsletter</a><a href="#">Privacy</a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="globe-data.js"></script>
+<script>
+// ── TICKER ──────────────────────────────────────────────────────────
+(function(){
+  const track = document.getElementById('ticker-track');
+  const all = [...GLOBE.tickerItems, ...GLOBE.tickerItems];
+  track.innerHTML = all.map(t => {
+    const [label, ...rest] = t.text.split(' — ');
+    return `<a class="ticker-item" href="event.html?id=${t.id}"><strong>${label}</strong> — ${rest.join(' — ')}</a>`;
+  }).join('');
+})();
+
+// ── SCROLL REVEAL ────────────────────────────────────────────────────
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);} });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// ── DATE STRIP (handled by ticker now) ──────────────────────────────
+
+// ── BUILD DYNAMIC EVENT CARDS ────────────────────────────────────────
+function makeCard(ev, showDesc) {
+  const desc = ev.description ? ev.description.replace(/<[^>]+>/g,'').substring(0,100) + '…' : '';
+  return `<a class="event-card${ev.highlight?' highlight':''} reveal" href="event.html?id=${ev.id}">
+    <div class="event-card-bar" style="background:${ev.color};"></div>
+    <div class="event-card-body">
+      ${ev.highlight?'<div class="highlight-badge">★ Top Pick</div>':''}
+      <span class="event-tag ${ev.tagClass||'tag-opening'}">${ev.tag}</span>
+      <h4>${ev.title}</h4>
+      <div class="venue">${ev.venue}</div>
+      <p class="desc">${desc}</p>
+      <div class="event-card-footer">
+        <span class="event-time">${ev.time}</span>
+        <span class="event-price">${ev.priceDisplay}</span>
+        <span class="book-btn">${ev.bookingType==='free'?'Info →':'Book →'}</span>
+      </div>
+    </div>
+  </a>`;
+}
+
+function makeExhibitionRow(ev) {
+  const daysText = ev.date.startsWith('Until') ? 'Closing' : ev.date.startsWith('Opens') ? 'Coming' : 'On Now';
+  const num = ev.date.match(/\d+/)?.[0] || '–';
+  return `<a class="exhibition-row" href="event.html?id=${ev.id}">
+    <div class="exhibition-days"><span class="num">${num}</span><span class="label">days</span></div>
+    <div class="exhibition-info">
+      <h4>${ev.title}</h4>
+      <div class="artist">${ev.artist}</div>
+      <div class="gallery-name">📍 ${ev.venue}</div>
+    </div>
+    <div class="exhibition-dates"><strong>${ev.date}</strong>${ev.priceDisplay}</div>
+    <span class="exhibition-arrow">→</span>
+  </a>`;
+}
+
+// Populate grids
+const todayEvs = GLOBE.events.filter(e => e.category === 'opening' || e.category === 'talk');
+const exhibEvs  = GLOBE.events.filter(e => e.category === 'exhibition');
+const popupEvs  = GLOBE.events.filter(e => e.category === 'popup');
+
+document.getElementById('today-events-grid').innerHTML = todayEvs.map(makeCard).join('');
+document.getElementById('exhibitions-list-today').innerHTML = exhibEvs.slice(0,5).map(makeExhibitionRow).join('');
+document.getElementById('exhibitions-list-full').innerHTML  = exhibEvs.map(makeExhibitionRow).join('');
+document.getElementById('galleries-grid').innerHTML = [...todayEvs,...exhibEvs].slice(0,6).map(makeCard).join('');
+document.getElementById('popups-grid').innerHTML    = popupEvs.map(makeCard).join('');
+
+// Re-observe newly added elements
+document.querySelectorAll('.reveal:not(.visible)').forEach(el => io.observe(el));
+
+// ── NAV FILTER ───────────────────────────────────────────────────────
+const VIEWS = ['today','exhibitions','galleries','popups'];
+function showView(name) {
+  VIEWS.forEach(v => {
+    document.getElementById('view-'+v).style.display = v===name?'':'none';
+  });
+  document.querySelectorAll('nav a[data-filter], footer a[data-filter]').forEach(a => {
+    a.classList.toggle('active', a.dataset.filter===name);
+  });
+  // Reset ticker animation
+  window.scrollTo({top:0,behavior:'smooth'});
+  // Re-trigger reveals for new view
+  setTimeout(() => {
+    document.querySelectorAll('#view-'+name+' .reveal:not(.visible)').forEach(el => io.observe(el));
+  }, 50);
+}
+
+document.querySelectorAll('[data-filter]').forEach(a => {
+  a.addEventListener('click', e => {
+    e.preventDefault();
+    const f = a.dataset.filter;
+    if(VIEWS.includes(f)) showView(f);
+    else if(f==='all-today') showView('today');
+  });
+});
+
+// ── NEWSLETTER VALIDATION ─────────────────────────────────────────────
+document.getElementById('nl-submit').addEventListener('click', function() {
+  const name     = document.getElementById('nl-name');
+  const email    = document.getElementById('nl-email');
+  const postcode = document.getElementById('nl-postcode');
+  let ok = true;
+
+  [name,email,postcode].forEach(el => {
+    el.classList.remove('nl-err');
+    if(!el.value.trim()){el.classList.add('nl-err');ok=false;}
+  });
+  if(email.value && !email.value.includes('@')){email.classList.add('nl-err');ok=false;}
+  const pcRe = /^[A-Z]{1,2}\d[A-Z\d]?\s?\d[A-Z]{2}$/i;
+  if(postcode.value && !pcRe.test(postcode.value.trim())){postcode.classList.add('nl-err');ok=false;}
+
+  if(!ok){
+    this.textContent='Please fill in all required fields';
+    this.style.background='#8A0B1E';
+    setTimeout(()=>{this.textContent='Subscribe to the Daily Digest →';this.style.background='';},2500);
+    return;
+  }
+  this.textContent='✓ You\'re on the list!';
+  this.style.background='#1C6B3A';
+  [name,email,postcode].forEach(el=>el.value='');
+});
+
+// ── MOBILE NAV ──────────────────────────────────────────────────────
+function toggleMobileNav(){const open=document.getElementById('mobile-nav-drawer').classList.toggle('open');document.getElementById('mobile-nav-overlay').classList.toggle('open',open);document.getElementById('hamburger').classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+function closeMobileNav(){document.getElementById('mobile-nav-drawer').classList.remove('open');document.getElementById('mobile-nav-overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+document.querySelectorAll('.mobile-nav-links [data-filter]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const f=a.dataset.filter;if(VIEWS.includes(f))showView(f);else if(f==='all-today')showView('today');});});
+
+// Handle newsletter anchor
+document.querySelector('a[href="#newsletter"]').addEventListener('click', e => {
+  e.preventDefault();
+  showView('today');
+  setTimeout(()=>{document.getElementById('newsletter').scrollIntoView({behavior:'smooth',block:'center'});},100);
+});
+</script>
+</body>
+</html>

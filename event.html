@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event — Globe</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="globe-shared.css">
+<style>
+.event-hero{max-width:1400px;margin:0 auto;padding:52px 40px 0;}
+.breadcrumb{font-size:12px;color:var(--ink-4);margin-bottom:28px;display:flex;align-items:center;gap:8px;}
+.breadcrumb a{color:var(--red);text-decoration:none;}
+.breadcrumb a:hover{text-decoration:underline;}
+.event-layout{display:grid;grid-template-columns:1fr 380px;gap:56px;align-items:start;padding-bottom:80px;}
+.event-main{}
+.event-color-bar{height:6px;border-radius:3px;margin-bottom:28px;}
+.event-main .event-tag{font-size:11px;}
+.event-main h1{font-family:'Playfair Display',serif;font-size:clamp(32px,4vw,54px);line-height:1.1;letter-spacing:-.5px;color:var(--ink);margin:12px 0 8px;}
+.event-artist{font-size:16px;color:var(--ink-3);margin-bottom:28px;}
+.event-description{font-size:15px;line-height:1.85;color:var(--ink-2);margin-bottom:36px;}
+.event-description p{margin-bottom:16px;}
+.event-description p:last-child{margin-bottom:0;}
+
+/* META PILLS */
+.event-meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px;}
+.meta-block{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;}
+.meta-block .meta-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:5px;}
+.meta-block .meta-value{font-size:14px;font-weight:600;color:var(--ink);}
+.meta-block .meta-sub{font-size:12px;color:var(--ink-3);margin-top:2px;}
+
+/* MAP EMBED */
+.event-map{border-radius:10px;overflow:hidden;border:1px solid var(--border);height:180px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ink-4);margin-bottom:36px;position:relative;}
+.event-map-label{position:absolute;bottom:12px;left:12px;background:white;border-radius:6px;padding:6px 12px;font-size:12px;font-weight:600;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.12);}
+
+/* SIDEBAR */
+.event-sidebar{position:sticky;top:100px;}
+.booking-card{background:var(--surface);border-radius:14px;border:1px solid var(--border);overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.07);}
+.booking-card-header{padding:22px 24px 20px;}
+.booking-card-price{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--red);margin-bottom:4px;}
+.booking-card-price.free{color:var(--green);}
+.booking-card-title{font-size:13px;color:var(--ink-3);}
+.booking-card-body{padding:0 24px 24px;display:flex;flex-direction:column;gap:12px;}
+
+/* TICKET ROW */
+.ticket-row{background:var(--bg);border:2px solid var(--border);border-radius:10px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;transition:border-color .2s,background .2s;}
+.ticket-row:hover,.ticket-row.sel{border-color:var(--red);background:var(--red-dim);}
+.ticket-row-info h4{font-size:14px;font-weight:600;color:var(--ink);}
+.ticket-row-info p{font-size:11px;color:var(--ink-3);margin-top:1px;}
+.ticket-row-right{display:flex;align-items:center;gap:14px;}
+.t-price{font-family:'Playfair Display',serif;font-size:18px;color:var(--red);font-weight:700;text-align:right;min-width:44px;}
+.qty-ctrl{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:7px;overflow:hidden;background:var(--surface);}
+.qty-b{width:30px;height:30px;border:none;background:none;font-size:16px;cursor:pointer;color:var(--ink-3);transition:background .15s,color .15s;line-height:1;}
+.qty-b:hover{background:var(--bg);color:var(--red);}
+.qty-n{width:32px;text-align:center;font-size:14px;font-weight:700;color:var(--ink);border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);padding:5px 0;}
+
+/* RSVP FORM */
+.rsvp-form{display:flex;flex-direction:column;gap:10px;}
+.rsvp-note{background:var(--gold-dim);border-radius:8px;padding:12px 14px;font-size:12px;color:#7A5A00;line-height:1.6;margin-bottom:4px;}
+.rsvp-field{padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;color:var(--ink);font-family:'DM Sans',sans-serif;outline:none;background:var(--surface);transition:border-color .2s;}
+.rsvp-field:focus{border-color:var(--red);}
+.rsvp-field.err{border-color:var(--red);background:#fff8f8;}
+
+/* ORDER SUMMARY */
+.order-summary-mini{border-top:1px solid var(--border);padding:16px 24px;}
+.summary-line-mini{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-3);padding:3px 0;}
+.summary-line-mini strong{color:var(--ink);}
+.summary-total-mini{display:flex;justify-content:space-between;padding:10px 0 0;margin-top:8px;border-top:1px solid var(--border);}
+.summary-total-mini .label{font-weight:700;font-size:15px;color:var(--ink);}
+.summary-total-mini .amount{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--ink);}
+
+/* SECURE NOTE */
+.secure-strip{background:var(--green-dim);border-radius:8px;padding:10px 14px;font-size:11px;color:var(--green);font-weight:600;display:flex;align-items:center;gap:8px;margin:0 24px 20px;}
+
+/* SUCCESS */
+.success-overlay{position:fixed;inset:0;background:rgba(24,19,15,.75);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(4px);}
+.success-overlay.show{opacity:1;pointer-events:all;}
+.success-card{background:var(--surface);border-radius:20px;padding:52px 48px;text-align:center;max-width:480px;width:90%;transform:translateY(30px);transition:transform .4s cubic-bezier(.22,1,.36,1);box-shadow:0 32px 80px rgba(0,0,0,.2);}
+.success-overlay.show .success-card{transform:translateY(0);}
+.success-icon{width:72px;height:72px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;color:white;margin:0 auto 24px;}
+.success-card h2{font-family:'Playfair Display',serif;font-size:32px;color:var(--ink);margin-bottom:12px;line-height:1.2;}
+.success-card h2 em{color:var(--red);}
+.success-card p{font-size:14px;color:var(--ink-3);line-height:1.7;margin-bottom:24px;}
+.booking-ref{background:var(--bg);border-radius:10px;padding:14px 20px;margin-bottom:28px;}
+.ref-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--ink-4);margin-bottom:6px;}
+.ref-num{font-family:'Playfair Display',serif;font-size:24px;color:var(--ink);letter-spacing:2px;}
+.success-btn{background:var(--red);color:white;border:none;padding:13px 28px;border-radius:8px;font-size:14px;font-weight:700;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .2s;}
+.success-btn:hover{background:var(--red-light);}
+
+/* RELATED */
+.related-section{max-width:1400px;margin:0 auto;padding:0 40px 80px;}
+.related-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+
+@media(max-width:900px){
+  .event-layout{grid-template-columns:1fr;gap:28px;}
+  .event-sidebar{position:static;}
+  .event-hero,.related-section{padding-left:24px;padding-right:24px;}
+  .event-meta-grid{grid-template-columns:1fr 1fr;}
+  .related-grid{grid-template-columns:1fr 1fr;}
+}
+@media(max-width:560px){
+  .event-hero{padding:20px 16px 0;}
+  .related-section{padding-left:16px;padding-right:16px;}
+  .event-meta-grid{grid-template-columns:1fr;}
+  .related-grid{grid-template-columns:1fr;}
+  .booking-card-price{font-size:26px;}
+  .booking-card-body{padding:0 16px 20px;}
+  .booking-card-header{padding:18px 16px 14px;}
+  .event-layout{gap:20px;}
+}
+@media(max-width:900px){
+  .event-map{height:200px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <nav>
+      <a href="index.html">Today</a>
+      <a href="index.html">Exhibitions</a>
+      <a href="index.html">Galleries</a>
+      <a href="index.html">Pop-ups</a>
+      <a href="map.html">Map</a>
+      <a href="index.html#newsletter" class="nav-cta">Daily Digest</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div class="mobile-nav-overlay" id="mobile-nav-overlay" onclick="closeMobileNav()"></div>
+<div class="mobile-nav-drawer" id="mobile-nav-drawer">
+  <div class="mobile-nav-header">
+    <a class="logo" href="index.html"><span class="logo-globe">Globe</span><span class="logo-dot"></span></a>
+    <button class="mobile-nav-close" onclick="closeMobileNav()">✕</button>
+  </div>
+  <div class="mobile-nav-links">
+    <a href="index.html" class="active">Today's Events</a>
+    <a href="map.html" class="active">Gallery Map</a>
+    <a href="neighbourhood.html?area=east-london" class="active">East London</a>
+    <a href="neighbourhood.html?area=south-london" class="active">South London</a>
+    <a href="about.html">About Globe</a>
+    <a href="submit.html">Submit an Event</a>
+    <a href="index.html#newsletter" class="mobile-nav-cta">Daily Digest →</a>
+  </div>
+</div>
+<div class="ticker-wrap"><div class="ticker-track" id="ticker-track"></div></div>
+
+<div class="event-hero">
+  <div class="breadcrumb"><a href="index.html">Globe</a> › <span id="bc-area">Events</span> › <span id="bc-title">Loading…</span></div>
+  <div class="event-layout">
+    <div class="event-main" id="event-main">Loading…</div>
+    <aside class="event-sidebar" id="event-sidebar"></aside>
+  </div>
+</div>
+
+<div class="related-section" id="related-section" style="display:none;">
+  <div class="section-header"><div class="section-header-left"><h2>More Like This</h2></div></div>
+  <div class="related-grid" id="related-grid"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand"><div class="footer-logo"><span class="footer-logo-globe">Globe</span><span class="footer-logo-dot"></span></div><p>London's daily guide to art, culture and creativity.</p></div>
+      <div class="footer-col"><h6>Discover</h6><ul><li><a href="index.html">Today's Events</a></li><li><a href="map.html">Gallery Map</a></li></ul></div>
+      <div class="footer-col"><h6>Neighbourhoods</h6><ul><li><a href="neighbourhood.html?area=east-london">East London</a></li><li><a href="neighbourhood.html?area=south-london">South London</a></li><li><a href="neighbourhood.html?area=west-end">West End</a></li></ul></div>
+      <div class="footer-col"><h6>About</h6><ul><li><a href="about.html">About Globe</a></li><li><a href="submit.html">Submit an Event</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Globe — London's Art Guide</p><div class="footer-socials"><a href="#">Instagram</a><a href="#">Privacy</a></div></div>
+  </div>
+</footer>
+
+<!-- SUCCESS OVERLAY -->
+<div class="success-overlay" id="success-overlay">
+  <div class="success-card">
+    <div class="success-icon" id="success-icon">✓</div>
+    <h2 id="success-title">You're <em>confirmed!</em></h2>
+    <p id="success-body">Your booking is confirmed. Check your email for details.</p>
+    <div class="booking-ref"><div class="ref-label">Reference</div><div class="ref-num" id="booking-ref">GA-2026-0000</div></div>
+    <button class="success-btn" onclick="window.location.href='index.html'">← Back to Globe</button>
+  </div>
+</div>
+
+<script src="globe-data.js"></script>
+<script>
+// Ticker
+(function(){
+  const track=document.getElementById('ticker-track');
+  const all=[...GLOBE.tickerItems,...GLOBE.tickerItems];
+  track.innerHTML=all.map(t=>{const[l,...r]=t.text.split(' — ');return`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${l}</strong> — ${r.join(' — ')}</a>`;}).join('');
+})();
+
+// Get event from URL
+const params = new URLSearchParams(location.search);
+const id     = params.get('id');
+const ev     = GLOBE.events.find(e => e.id === id);
+
+if (!ev) {
+  document.getElementById('event-main').innerHTML = '<p style="padding:40px 0;color:var(--ink-3);">Event not found. <a href="index.html" style="color:var(--red);">Back to Globe →</a></p>';
+} else {
+  document.title = ev.title + ' — Globe';
+  document.getElementById('bc-title').textContent = ev.title;
+  document.getElementById('bc-area').textContent  = ev.neighbourhood ? ev.neighbourhood.split('-').map(w=>w[0].toUpperCase()+w.slice(1)).join(' ') : 'Events';
+
+  // ── MAIN CONTENT ──────────────────────────────────────────────────
+  const descHTML = ev.description
+    ? ev.description.split('\n\n').map(p=>`<p>${p}</p>`).join('')
+    : '';
+
+  document.getElementById('event-main').innerHTML = `
+    <div class="event-color-bar" style="background:${ev.color};"></div>
+    <span class="event-tag ${ev.tagClass||'tag-opening'}">${ev.tag}</span>
+    <h1>${ev.title}</h1>
+    <div class="event-artist">${ev.artist}</div>
+    <div class="event-meta-grid">
+      <div class="meta-block"><div class="meta-label">Date</div><div class="meta-value">${ev.date}</div></div>
+      <div class="meta-block"><div class="meta-label">Time</div><div class="meta-value">${ev.time}</div></div>
+      <div class="meta-block"><div class="meta-label">Venue</div><div class="meta-value">${ev.venue}</div><div class="meta-sub">${ev.address}</div></div>
+      <div class="meta-block"><div class="meta-label">Admission</div><div class="meta-value">${ev.priceDisplay}</div></div>
+    </div>
+    <div class="event-description">${descHTML}</div>
+    ${(function(){
+      if(ev.lat && ev.lng){
+        const lng1=(ev.lng-0.008).toFixed(6), lat1=(ev.lat-0.005).toFixed(6);
+        const lng2=(+ev.lng+0.008).toFixed(6), lat2=(+ev.lat+0.005).toFixed(6);
+        return '<div class="event-map" style="height:220px;padding:0;background:#e8e4df;">'
+          + '<iframe width="100%" height="100%" style="border:0;display:block;" loading="lazy" allowfullscreen'
+          + ' src="https://www.openstreetmap.org/export/embed.html?bbox='+lng1+','+lat1+','+lng2+','+lat2+'&layer=mapnik&marker='+ev.lat+','+ev.lng+'"></iframe>'
+          + '<div class="event-map-label">📍 '+ev.venue+'</div>'
+          + '</div>';
+      }
+      return '<div class="event-map"><span>📍 '+ev.address+'</span><div class="event-map-label">'+ev.venue+'</div></div>';
+    })()}
+  `;
+
+  // ── SIDEBAR ────────────────────────────────────────────────────────
+  const sidebar = document.getElementById('event-sidebar');
+
+  if (ev.bookingType === 'free') {
+    sidebar.innerHTML = `
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div class="booking-card-price free">Free</div>
+          <div class="booking-card-title">No ticket required — just turn up</div>
+        </div>
+        <div class="booking-card-body">
+          <div style="background:var(--green-dim);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--green);line-height:1.6;">
+            ✓ This event is free and open to all. No booking needed.
+          </div>
+          <div style="background:var(--surface-2);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--ink-2);line-height:1.6;">
+            📍 <strong>${ev.venue}</strong><br>${ev.address}<br><br>
+            🕐 <strong>${ev.time}</strong>
+          </div>
+          <a href="${ev.url||'#'}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">↗ Visit organiser website</a>
+          <a href="map.html" class="btn-secondary" style="text-align:center;">View on Map →</a>
+        </div>
+      </div>`;
+
+  } else if (ev.bookingType === 'rsvp') {
+    sidebar.innerHTML = `
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div class="booking-card-price free">Free RSVP</div>
+          <div class="booking-card-title">Reserve your place on the organiser's site</div>
+        </div>
+        <div class="booking-card-body">
+          ${ev.rsvpNote?`<div class="rsvp-note">ℹ️ ${ev.rsvpNote}</div>`:''}
+          <div style="background:var(--gold-dim);border-radius:8px;padding:14px 16px;font-size:13px;color:#7A5A00;line-height:1.6;">
+            📍 <strong>${ev.venue}</strong><br>${ev.address}<br><br>
+            🕐 <strong>${ev.time}</strong>
+          </div>
+          <a href="${ev.url||'#'}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;">↗ RSVP on organiser site</a>
+          <a href="map.html" class="btn-secondary" style="text-align:center;">View on Map →</a>
+        </div>
+      </div>`;
+
+  } else if (ev.bookingType === 'paid' && ev.tickets) {
+    const lowestPrice = Math.min(...ev.tickets.filter(t=>t.price>0).map(t=>t.price));
+    sidebar.innerHTML = `
+      <div class="booking-card">
+        <div class="booking-card-header">
+          <div class="booking-card-price">From £${lowestPrice}</div>
+          <div class="booking-card-title">per ticket — via the organiser's website</div>
+        </div>
+        <div class="booking-card-body">
+          <div style="background:var(--bg);border-radius:8px;padding:14px 16px;font-size:13px;color:var(--ink-2);line-height:1.7;">
+            📍 <strong>${ev.venue}</strong><br><span style="color:var(--ink-3)">${ev.address}</span><br><br>
+            🕐 <strong>${ev.time}</strong><br>
+            📅 <strong>${ev.date}</strong>
+          </div>
+          <a href="${ev.url||'#'}" target="_blank" rel="noopener noreferrer" class="btn-primary" style="text-align:center;display:block;padding:15px;">Book Tickets →</a>
+          <p style="font-size:11px;color:var(--ink-4);text-align:center;line-height:1.6;">Globe links directly to the organiser — no extra fees, ever.</p>
+        </div>
+      </div>`;
+
+  }
+
+  // ── RELATED EVENTS ─────────────────────────────────────────────────
+  const related = GLOBE.events.filter(e => e.id!==id && (e.neighbourhood===ev.neighbourhood||e.category===ev.category)).slice(0,3);
+  if(related.length){
+    document.getElementById('related-section').style.display='';
+    document.getElementById('related-grid').innerHTML = related.map(r=>`
+      <a class="event-card" href="event.html?id=${r.id}">
+        <div class="event-card-bar" style="background:${r.color};"></div>
+        <div class="event-card-body">
+          <span class="event-tag ${r.tagClass||'tag-opening'}">${r.tag}</span>
+          <h4>${r.title}</h4>
+          <div class="venue">${r.venue}</div>
+          <div class="event-card-footer">
+            <span class="event-time">${r.time}</span>
+            <span class="event-price">${r.priceDisplay}</span>
+            <span class="book-btn">View →</span>
+          </div>
+        </div>
+      </a>`).join('');
+  }
+}
+
+
+
+// Scroll reveal
+const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');io.unobserve(x.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// Mobile Nav
+function toggleMobileNav(){const open=document.getElementById('mobile-nav-drawer').classList.toggle('open');document.getElementById('mobile-nav-overlay').classList.toggle('open',open);document.getElementById('hamburger').classList.toggle('open',open);document.body.style.overflow=open?'hidden':'';}
+function closeMobileNav(){document.getElementById('mobile-nav-drawer').classList.remove('open');document.getElementById('mobile-nav-overlay').classList.remove('open');document.getElementById('hamburger').classList.remove('open');document.body.style.overflow='';}
+</script>
+</body>
+</html>
