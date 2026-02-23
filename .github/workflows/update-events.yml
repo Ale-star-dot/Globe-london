@@ -8,7 +8,6 @@ on:
 jobs:
   scrape-and-deploy:
     runs-on: ubuntu-latest
-
     steps:
 
       - name: Checkout repository
@@ -22,7 +21,7 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-     - name: Scrape events
+      - name: Scrape events
         run: python run.py --dry-run
         env:
           PYTHONUNBUFFERED: '1'
@@ -53,6 +52,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes"
           else
-            git commit -m "🗓 Daily events update — $(date +'%A %-d %B %Y')"
+            git commit -m "Daily events update"
             git push
           fi
