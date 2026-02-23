@@ -1,188 +1,159 @@
 """
-Eventbrite London Art Events Scraper
-=====================================
-Uses Eventbrite's public search API (no key needed for basic searches).
-Targets art/visual-arts categories in London.
+Eventbrite London Art Events — Official API
+=============================================
+Uses Eventbrite's official search API.
+Requires a free API key from https://www.eventbrite.com/platform/api-key
 
-Eventbrite category IDs:
-  105 = Arts
-  103 = Music (excluded)
-  110 = Food & Drink (excluded)
+Set the environment variable EVENTBRITE_API_KEY in your GitHub repo secrets.
 """
 
-import re
+import os
 import requests
-from bs4 import BeautifulSoup
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 
-# Eventbrite category for Arts & Theatre & Comedy is 105
-EVENTBRITE_URL = (
-    "https://www.eventbrite.co.uk/d/united-kingdom--london/art-events/"
-    "?page={page}"
-)
+API_BASE = "https://www.eventbriteapi.com/v3"
 
-# Subcategory keywords that match our event types
-TYPE_KEYWORDS = {
-    "gallery":     ["gallery", "private view", "opening night", "vernissage", "preview"],
-    "exhibition":  ["exhibition", "exhibit", "show", "retrospective", "survey", "collection"],
-    "popup":       ["pop-up", "popup", "market", "fair", "festival", "open studios"],
-    "performance": ["performance", "dance", "live art", "durational", "theatre", "concert"],
-    "talk":        ["talk", "lecture", "conversation", "workshop", "panel", "screening", "symposium"],
-}
+# Eventbrite category ID 105 = Arts
+ART_CATEGORY_ID = "105"
 
 HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/121.0.0.0 Safari/537.36"
-    ),
-    "Accept-Language": "en-GB,en;q=0.9",
+    "Authorization": f"Bearer {os.environ.get('EVENTBRITE_API_KEY', '')}",
+}
+
+TYPE_KEYWORDS = {
+    "gallery":     ["gallery", "private view", "opening night", "vernissage", "preview"],
+    "exhibition":  ["exhibition", "exhibit", "show", "retrospective", "survey"],
+    "popup":       ["pop-up", "popup", "market", "fair", "open studios"],
+    "performance": ["performance", "dance", "live art", "durational", "theatre"],
+    "talk":        ["talk", "lecture", "conversation", "workshop", "panel", "screening"],
 }
 
 
 def scrape_eventbrite(max_pages=5):
+    api_key = os.environ.get("EVENTBRITE_API_KEY", "")
+    if not api_key:
+        print("  Eventbrite: no API key set — skipping")
+        return []
+
     events = []
+    today = datetime.now(timezone.utc)
+    end   = today + timedelta(days=7)
+
+    params = {
+        "location.address":       "London, UK",
+        "location.within":        "30km",
+        "categories":             ART_CATEGORY_ID,
+        "start_date.range_start": today.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "start_date.range_end":   end.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "expand":                 "venue,ticket_classes",
+        "page_size":              50,
+    }
 
     for page in range(1, max_pages + 1):
-        url = EVENTBRITE_URL.format(page=page)
+        params["page"] = page
         try:
-            resp = requests.get(url, headers=HEADERS, timeout=15)
+            resp = requests.get(
+                f"{API_BASE}/events/search/",
+                headers=HEADERS,
+                params=params,
+                timeout=20,
+            )
             resp.raise_for_status()
+            data = resp.json()
         except Exception as e:
-            print(f"  Eventbrite page {page} error: {e}")
+            print(f"  Eventbrite API error page {page}: {e}")
             break
 
-        soup = BeautifulSoup(resp.text, "lxml")
-
-        # Eventbrite renders event cards in <li> elements with data attributes
-        cards = soup.select("li[data-event-id], article.eds-event-card")
-
-        if not cards:
-            # Try alternate selectors for their newer layout
-            cards = soup.select("[class*='event-card'], [data-testid='event-card']")
-
-        if not cards:
-            break
-
-        for card in cards:
-            ev = parse_eventbrite_card(card)
+        for item in data.get("events", []):
+            ev = parse_event(item)
             if ev:
                 events.append(ev)
+
+        if not data.get("pagination", {}).get("has_more_items"):
+            break
 
     return events
 
 
-def parse_eventbrite_card(card):
+def parse_event(item):
     try:
-        title_el = (
-            card.select_one("[class*='title'], h2, h3, [data-testid='event-title']")
-        )
-        title = title_el.get_text(strip=True) if title_el else None
+        title = item.get("name", {}).get("text", "")
         if not title:
             return None
 
-        # Determine event type from title/description keywords
-        event_type = classify_type(title)
+        desc = item.get("description", {}).get("text", "") or ""
+        event_type = classify_type(title + " " + desc)
 
-        venue_el = card.select_one("[class*='venue'], [class*='location'], [data-testid*='venue']")
-        venue = venue_el.get_text(strip=True) if venue_el else "London"
+        venue = item.get("venue", {}) or {}
+        address_obj = venue.get("address", {}) or {}
+        venue_name = venue.get("name", "London")
+        addr_str = address_obj.get("localized_address_display", venue_name)
+        lat = venue.get("latitude")
+        lng = venue.get("longitude")
 
-        date_el = card.select_one("time, [class*='date'], [datetime]")
-        if date_el:
-            date_str = date_el.get("datetime") or date_el.get_text(strip=True)
-            date = format_date(date_str)
-        else:
-            date = "Today"
+        start = item.get("start", {}).get("utc", "")
+        end   = item.get("end",   {}).get("utc", "")
+        date_str = format_date(start)
+        time_str = format_time(start, end)
 
-        price_el = card.select_one("[class*='price'], [class*='cost']")
-        price = price_el.get_text(strip=True) if price_el else "Free entry"
-
-        link_el = card.select_one("a[href*='eventbrite']")
-        url = link_el["href"] if link_el else None
-
-        img_el = card.select_one("img")
-        image = img_el.get("src") or img_el.get("data-src") if img_el else None
-
-        desc_el = card.select_one("[class*='description'], [class*='summary'], p")
-        description = desc_el.get_text(strip=True)[:200] if desc_el else ""
+        tickets = item.get("ticket_classes", []) or []
+        prices  = [float(t["cost"]["major_value"]) for t in tickets
+                   if t.get("cost") and not t.get("free")]
+        price_num = min(prices) if prices else 0
+        price_str = f"£{price_num:.0f}" if price_num else "Free entry"
 
         return {
             "source":      "eventbrite",
-            "source_id":   card.get("data-event-id", ""),
+            "source_id":   item.get("id", ""),
             "type":        event_type,
             "label":       get_label(event_type),
             "title":       title,
             "artist":      "",
-            "venue":       venue,
-            "address":     venue,  # geocoder will resolve
-            "lat":         None,
-            "lng":         None,
-            "time":        extract_time(date_str if date_el else ""),
-            "date":        date,
-            "price":       clean_price(price),
-            "priceNum":    extract_price_num(price),
-            "description": description,
-            "url":         url,
-            "image":       image,
+            "venue":       venue_name,
+            "address":     addr_str,
+            "lat":         float(lat) if lat else None,
+            "lng":         float(lng) if lng else None,
+            "time":        time_str,
+            "date":        date_str,
+            "price":       price_str,
+            "priceNum":    price_num,
+            "description": desc[:300],
+            "url":         item.get("url", ""),
             "highlight":   False,
             "sponsored":   False,
         }
-    except Exception:
+    except Exception as e:
+        print(f"  Eventbrite parse error: {e}")
         return None
 
 
 def classify_type(text):
-    text_lower = text.lower()
+    t = text.lower()
     for event_type, keywords in TYPE_KEYWORDS.items():
-        if any(kw in text_lower for kw in keywords):
+        if any(kw in t for kw in keywords):
             return event_type
-    return "exhibition"  # default for art events
-
+    return "exhibition"
 
 def get_label(event_type):
-    labels = {
-        "gallery":     "Gallery Opening",
-        "exhibition":  "Exhibition",
-        "popup":       "Pop-up & Market",
-        "performance": "Performance",
-        "talk":        "Artist Talk",
-    }
-    return labels.get(event_type, "Event")
+    return {"gallery":"Gallery Opening","exhibition":"Exhibition","popup":"Pop-up & Market",
+            "performance":"Performance","talk":"Artist Talk"}.get(event_type,"Event")
 
-
-def format_date(date_str):
-    if not date_str:
-        return "Today"
+def format_date(iso_str):
+    if not iso_str: return "Today"
     try:
-        dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
-        today = datetime.now().date()
-        if dt.date() == today:
-            return "Today"
-        elif (dt.date() - today).days == 1:
-            return "Tomorrow"
-        else:
-            return dt.strftime("%-d %b")
-    except Exception:
-        return date_str[:10] if len(date_str) >= 10 else "Today"
+        dt    = datetime.fromisoformat(iso_str.replace("Z","+00:00"))
+        today = datetime.now(timezone.utc).date()
+        delta = (dt.date()-today).days
+        if delta==0: return "Today"
+        if delta==1: return "Tomorrow"
+        return dt.strftime("%-d %b")
+    except: return "Upcoming"
 
-
-def extract_time(date_str):
+def format_time(start, end):
     try:
-        dt = datetime.fromisoformat(date_str.replace("Z", "+00:00"))
-        return dt.strftime("%H:%M")
-    except Exception:
-        return "See website"
-
-
-def clean_price(price_str):
-    if not price_str or "free" in price_str.lower():
-        return "Free entry"
-    price_str = re.sub(r"\s+", " ", price_str).strip()
-    return price_str[:20]
-
-
-def extract_price_num(price_str):
-    if not price_str or "free" in price_str.lower():
-        return 0
-    nums = re.findall(r"[\d.]+", price_str)
-    return float(nums[0]) if nums else 0
+        s = datetime.fromisoformat(start.replace("Z","+00:00"))
+        if end:
+            e = datetime.fromisoformat(end.replace("Z","+00:00"))
+            return f"{s.strftime('%H:%M')} – {e.strftime('%H:%M')}"
+        return s.strftime("%H:%M")
+    except: return "See website"
