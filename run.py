@@ -1,34 +1,24 @@
 #!/usr/bin/env python3
 """
 Globe Art Events Scraper — run.py
-Scrapes London art events and deploys to Netlify.
 """
 
 import json, sys, time, logging, argparse
 from datetime import datetime
 from pathlib import Path
 
+from venues_rss    import scrape_venues_rss
 from eventbrite    import scrape_eventbrite
 from designmynight import scrape_designmynight
-from timeout       import scrape_timeout
 from ra            import scrape_ra
 from geocoder      import geocode_address
-from deployer      import deploy_to_netlify
 from writer        import write_events_js
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s  %(levelname)-8s  %(message)s", datefmt="%H:%M:%S")
 log = logging.getLogger("globe")
 
-SOURCES = {
-    "eventbrite":    scrape_eventbrite,
-    "designmynight": scrape_designmynight,
-    "timeout":       scrape_timeout,
-    "ra":            scrape_ra,
-}
-
-ALLOWED_TYPES = {"gallery", "exhibition", "popup", "performance", "talk"}
-
-LONDON_BOUNDS = {"lat_min": 51.28, "lat_max": 51.70, "lng_min": -0.51, "lng_max": 0.33}
+ALLOWED_TYPES  = {"gallery", "exhibition", "popup", "performance", "talk"}
+LONDON_BOUNDS  = {"lat_min": 51.28, "lat_max": 51.70, "lng_min": -0.51, "lng_max": 0.33}
 
 def load_geocode_cache():
     p = Path(".geocode_cache.json")
@@ -40,26 +30,51 @@ def save_geocode_cache(cache):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry-run", action="store_true")
-    parser.add_argument("--source",  default=None, choices=list(SOURCES.keys()))
     args = parser.parse_args()
 
     log.info("Globe scraper starting — %s", datetime.now().strftime("%A %d %b %Y %H:%M"))
 
-    # 1. Scrape
     raw_events = []
-    sources_to_run = {args.source: SOURCES[args.source]} if args.source else SOURCES
-    for name, fn in sources_to_run.items():
-        log.info("Scraping %s …", name)
-        try:
-            events = fn()
-            log.info("  → %d events from %s", len(events), name)
-            raw_events.extend(events)
-        except Exception as e:
-            log.error("  ✗ %s failed: %s", name, e)
+
+    # 1. Venue RSS feeds — most reliable, always run first
+    log.info("Scraping venue RSS feeds …")
+    try:
+        rss_events = scrape_venues_rss()
+        log.info("  → %d events from venue RSS", len(rss_events))
+        raw_events.extend(rss_events)
+    except Exception as e:
+        log.error("  ✗ venue RSS failed: %s", e)
+
+    # 2. RA GraphQL
+    log.info("Scraping RA …")
+    try:
+        ra_events = scrape_ra()
+        log.info("  → %d events from RA", len(ra_events))
+        raw_events.extend(ra_events)
+    except Exception as e:
+        log.error("  ✗ RA failed: %s", e)
+
+    # 3. Eventbrite official API (only if key set)
+    log.info("Scraping Eventbrite …")
+    try:
+        eb_events = scrape_eventbrite()
+        log.info("  → %d events from Eventbrite", len(eb_events))
+        raw_events.extend(eb_events)
+    except Exception as e:
+        log.error("  ✗ Eventbrite failed: %s", e)
+
+    # 4. Designmynight
+    log.info("Scraping Designmynight …")
+    try:
+        dmn_events = scrape_designmynight()
+        log.info("  → %d events from Designmynight", len(dmn_events))
+        raw_events.extend(dmn_events)
+    except Exception as e:
+        log.error("  ✗ Designmynight failed: %s", e)
 
     log.info("Total raw: %d", len(raw_events))
 
-    # 2. Geocode
+    # 2. Geocode missing coords
     cache = load_geocode_cache()
     geocoded = []
     for ev in raw_events:
@@ -80,7 +95,7 @@ def main():
         geocoded.append(ev)
     save_geocode_cache(cache)
 
-    # 3. Filter
+    # 3. Filter to London bounds
     filtered = [
         ev for ev in geocoded
         if ev.get("type") in ALLOWED_TYPES
@@ -109,15 +124,6 @@ def main():
     if args.dry_run:
         log.info("Dry run — not deploying")
         return
-
-    # 6. Deploy
-    log.info("Deploying …")
-    try:
-        deploy_to_netlify(output)
-        log.info("✓ Done")
-    except Exception as e:
-        log.error("✗ Deploy failed: %s", e)
-        sys.exit(1)
 
 if __name__ == "__main__":
     main()
