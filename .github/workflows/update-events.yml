@@ -22,11 +22,11 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Scrape events
+     - name: Scrape events
         run: python run.py --dry-run
         env:
           PYTHONUNBUFFERED: '1'
-           EVENTBRITE_API_KEY: ${{ secrets.EVENTBRITE_API_KEY }}
+          EVENTBRITE_API_KEY: ${{ secrets.EVENTBRITE_API_KEY }}
 
       - name: Validate output
         run: |
