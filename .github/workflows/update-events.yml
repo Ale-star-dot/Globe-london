@@ -26,6 +26,7 @@ jobs:
         run: python run.py --dry-run
         env:
           PYTHONUNBUFFERED: '1'
+           EVENTBRITE_API_KEY: ${{ secrets.EVENTBRITE_API_KEY }}
 
       - name: Validate output
         run: |
