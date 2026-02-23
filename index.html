@@ -424,16 +424,16 @@
   </div>
 </footer>
 
-<script src="globe-data.js"></script>
+<script src="events-data.js"></script>
 <script>
 // ── TICKER ──────────────────────────────────────────────────────────
 (function(){
   const track = document.getElementById('ticker-track');
-  const all = [...GLOBE.tickerItems, ...GLOBE.tickerItems];
-  track.innerHTML = all.map(t => {
-    const [label, ...rest] = t.text.split(' — ');
-    return `<a class="ticker-item" href="event.html?id=${t.id}"><strong>${label}</strong> — ${rest.join(' — ')}</a>`;
-  }).join('');
+  const items = [...GLOBE_EVENTS].sort((a,b)=>(b.highlight?1:0)-(a.highlight?1:0)).slice(0,12);
+  const doubled = [...items,...items];
+  track.innerHTML = doubled.map(t =>
+    `<a class="ticker-item" href="event.html?id=${t.id}"><strong>${t.title}</strong> — ${t.venue} — ${t.date}</a>`
+  ).join('');
 })();
 
 // ── SCROLL REVEAL ────────────────────────────────────────────────────
@@ -480,9 +480,9 @@ function makeExhibitionRow(ev) {
 }
 
 // Populate grids
-const todayEvs = GLOBE.events.filter(e => e.category === 'opening' || e.category === 'talk');
-const exhibEvs  = GLOBE.events.filter(e => e.category === 'exhibition');
-const popupEvs  = GLOBE.events.filter(e => e.category === 'popup');
+const todayEvs = GLOBE_EVENTS.filter(e => e.category === 'opening' || e.category === 'talk');
+const exhibEvs  = GLOBE_EVENTS.filter(e => e.category === 'exhibition');
+const popupEvs  = GLOBE_EVENTS.filter(e => e.category === 'popup');
 
 document.getElementById('today-events-grid').innerHTML = todayEvs.map(makeCard).join('');
 document.getElementById('exhibitions-list-today').innerHTML = exhibEvs.slice(0,5).map(makeExhibitionRow).join('');

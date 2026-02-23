@@ -186,19 +186,20 @@
   </div>
 </div>
 
-<script src="globe-data.js"></script>
+<script src="events-data.js"></script>
 <script>
 // Ticker
 (function(){
   const track=document.getElementById('ticker-track');
-  const all=[...GLOBE.tickerItems,...GLOBE.tickerItems];
-  track.innerHTML=all.map(t=>{const[l,...r]=t.text.split(' — ');return`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${l}</strong> — ${r.join(' — ')}</a>`;}).join('');
+  const tickerItems=[...GLOBE_EVENTS].sort((a,b)=>(b.highlight?1:0)-(a.highlight?1:0)).slice(0,12);
+  const doubled=[...tickerItems,...tickerItems];
+  track.innerHTML=doubled.map(t=>`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${t.title}</strong> — ${t.venue} — ${t.date}</a>`).join('');
 })();
 
 // Get event from URL
 const params = new URLSearchParams(location.search);
 const id     = params.get('id');
-const ev     = GLOBE.events.find(e => e.id === id);
+const ev     = GLOBE_EVENTS.find(e => String(e.id) === String(id));
 
 if (!ev) {
   document.getElementById('event-main').innerHTML = '<p style="padding:40px 0;color:var(--ink-3);">Event not found. <a href="index.html" style="color:var(--red);">Back to Globe →</a></p>';
@@ -279,8 +280,8 @@ if (!ev) {
         </div>
       </div>`;
 
-  } else if (ev.bookingType === 'paid' && ev.tickets) {
-    const lowestPrice = Math.min(...ev.tickets.filter(t=>t.price>0).map(t=>t.price));
+  } else if (ev.bookingType === 'paid') {
+    const lowestPrice = ev.tickets ? Math.min(...ev.tickets.filter(t=>t.price>0).map(t=>t.price)) : ev.priceNum || 0;
     sidebar.innerHTML = `
       <div class="booking-card">
         <div class="booking-card-header">
@@ -301,7 +302,7 @@ if (!ev) {
   }
 
   // ── RELATED EVENTS ─────────────────────────────────────────────────
-  const related = GLOBE.events.filter(e => e.id!==id && (e.neighbourhood===ev.neighbourhood||e.category===ev.category)).slice(0,3);
+  const related = GLOBE_EVENTS.filter(e => String(e.id)!==String(id) && (e.neighbourhood===ev.neighbourhood||e.category===ev.category)).slice(0,3);
   if(related.length){
     document.getElementById('related-section').style.display='';
     document.getElementById('related-grid').innerHTML = related.map(r=>`

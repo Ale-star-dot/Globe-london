@@ -206,8 +206,9 @@ select option{color:var(--ink);}
 </footer>
 
 <script src="globe-data.js"></script>
+<script src="events-data.js"></script>
 <script>
-(function(){const track=document.getElementById('ticker-track');const all=[...GLOBE.tickerItems,...GLOBE.tickerItems];track.innerHTML=all.map(t=>{const[l,...r]=t.text.split(' — ');return`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${l}</strong> — ${r.join(' — ')}</a>`;}).join('');})();
+(function(){const track=document.getElementById('ticker-track');if(!window.GLOBE_EVENTS||!GLOBE_EVENTS.length)return;const items=[...GLOBE_EVENTS].sort((a,b)=>(b.highlight?1:0)-(a.highlight?1:0)).slice(0,12);const d=[...items,...items];track.innerHTML=d.map(t=>`<a class="ticker-item" href="event.html?id=${t.id}"><strong>${t.title}</strong> — ${t.venue} — ${t.date}</a>`).join('');})();
 
 function handleSubmit(e) {
   e.preventDefault();
