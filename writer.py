@@ -77,6 +77,7 @@ def write_events_js(events: list, output_path: Path) -> None:
   }}"""
         entries.append(entry)
 
+    entries_joined = ",\n".join(entries)
     js = f"""// ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
 //  Last updated: {now}
@@ -85,7 +86,7 @@ def write_events_js(events: list, output_path: Path) -> None:
 // ─────────────────────────────────────────────────────────────────
 
 const GLOBE_EVENTS = [
-{",\n".join(entries)}
+{entries_joined}
 ];
 
 // ── TYPE CONFIG: colours, icons, labels ──
