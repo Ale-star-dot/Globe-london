@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-02-25 05:57 UTC
+//  Last updated: 2026-02-26 05:54 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -8,6 +8,31 @@
 const GLOBE_EVENTS = [
   {
     id: 1,
+    type: "gallery",
+    category: "opening",
+    label: "Gallery Opening",
+    tag: "Gallery Opening",
+    tagClass: "tag-opening",
+    color: "#C8102E",
+    title: "Interview with artist Samantha Fellows",
+    artist: "",
+    venue: "South London Gallery",
+    address: "South London Gallery, London",
+    neighbourhood: "southbank",
+    lat: 51.471, lng: -0.0643,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "The post  Interview with artist Samantha Fellows  appeared first on  South London Gallery .",
+    url: "https://www.southlondongallery.org/journal/interview-with-artist-samantha-fellows",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 2,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -32,7 +57,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 2,
+    id: 3,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -57,7 +82,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 3,
+    id: 4,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -82,7 +107,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 4,
+    id: 5,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -107,7 +132,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 5,
+    id: 6,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -132,7 +157,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 6,
+    id: 7,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -157,7 +182,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 7,
+    id: 8,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -182,7 +207,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 8,
+    id: 9,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -207,7 +232,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 9,
+    id: 10,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -228,31 +253,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "The post  5 Ways We\u2019re Making Our Work More Sustainable at the SLG  appeared first on  South London Gallery .",
     url: "https://www.southlondongallery.org/journal/sustainability",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 10,
-    type: "gallery",
-    category: "opening",
-    label: "Gallery Opening",
-    tag: "Gallery Opening",
-    tagClass: "tag-opening",
-    color: "#C8102E",
-    title: "5 Things to Spot in Christina Kimeze: Between Wood and Wheel",
-    artist: "",
-    venue: "South London Gallery",
-    address: "South London Gallery, London",
-    neighbourhood: "southbank",
-    lat: 51.471, lng: -0.0643,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "The post  5 Things to Spot in Christina Kimeze: Between Wood and Wheel  appeared first on  South London Gallery .",
-    url: "https://www.southlondongallery.org/journal/5-things-to-spot-in-christina-kimeze-between-wood-and-wheel",
     highlight: false,
     sponsored: false,
   },
