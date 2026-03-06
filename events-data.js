@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-03-05 05:44 UTC
+//  Last updated: 2026-03-06 05:41 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -264,6 +264,31 @@ const GLOBE_EVENTS = [
     tag: "Exhibition",
     tagClass: "tag-exhibition",
     color: "#D4A020",
+    title: "SAATCHI GALLERY PRESENTS FIRST GROUP TEXTILE ART EXHIBITION, TEXTILE ART REDEFINED",
+    artist: "",
+    venue: "Saatchi Gallery",
+    address: "Saatchi Gallery, London",
+    neighbourhood: "central-london",
+    lat: 51.4897, lng: -0.1594,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "Textile Art Redefined explores the innovation and creativity of contemporary fine art textiles. Showcasing work by more than 15 visionary artists, the exhibition both celebrates the vibrancy of textile art today and expands the very definition. \n The post  SAATCHI GALLERY PRESENTS FIRST GROUP TEXTIL",
+    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-presents-first-group-textile-art-exhibition-textile-art-redefined?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-presents-first-group-textile-art-exhibition-textile-art-redefined",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 12,
+    type: "exhibition",
+    category: "exhibition",
+    label: "Exhibition",
+    tag: "Exhibition",
+    tagClass: "tag-exhibition",
+    color: "#D4A020",
     title: "SAATCHI GALLERY PRESENTS CAROLINE WONG: GIRLS WHO DEVOUR",
     artist: "",
     venue: "Saatchi Gallery",
@@ -282,7 +307,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 12,
+    id: 13,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -307,7 +332,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 13,
+    id: 14,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -332,7 +357,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 14,
+    id: 15,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -357,7 +382,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 15,
+    id: 16,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -382,7 +407,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 16,
+    id: 17,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -407,7 +432,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 17,
+    id: 18,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -432,7 +457,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 18,
+    id: 19,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -457,7 +482,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 19,
+    id: 20,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -478,31 +503,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "Celebrating four decades of ground-breaking contemporary art, Saatchi Gallery will open landmark exhibition, The Long Now on 5 November 2025, supported by De Beers. This expansive group show will showcase new works by iconic artists closely associated with the Gallery\u2019s dynamic history, alongside fr",
     url: "https://www.saatchigallery.com/press/release/saatchi-gallery-to-present-the-long-now-an-exhibition-exploring-themes-prevalant-through-40-years-of-contemporary-art?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-to-present-the-long-now-an-exhibition-exploring-themes-prevalant-through-40-years-of-contemporary-art",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 20,
-    type: "exhibition",
-    category: "exhibition",
-    label: "Exhibition",
-    tag: "Exhibition",
-    tagClass: "tag-exhibition",
-    color: "#D4A020",
-    title: "BAGRI FOUNDATION AND SAATCHI GALLERY PRESENT MYTHS, DREAMS AND NEW REALITIES, AN EXHIBITION PLATFORMING AN EMERGING GENERATION OF ASIAN ARTISTS",
-    artist: "",
-    venue: "Saatchi Gallery",
-    address: "Saatchi Gallery, London",
-    neighbourhood: "central-london",
-    lat: 51.4897, lng: -0.1594,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "Myths, Dreams and New Realities will spotlight 13 emerging artists from across the Asian diaspora, who each reimagine cultural identity through personal mythologies and visionary material practices.\u00a0Across the gallery space, dreamlike visuals unfurl as the artists investigate the entangled relations",
-    url: "https://www.saatchigallery.com/press/release/bagri-foundation-and-saatchi-gallery-present-myths-dreams-and-new-realities-an-exhibition-platforming-an-emerging-generation-of-asian-artists?utm_source=rss&utm_medium=rss&utm_campaign=bagri-foundation-and-saatchi-gallery-present-myths-dreams-and-new-realities-an-exhibition-platforming-an-emerging-generation-of-asian-artists",
     highlight: false,
     sponsored: false,
   }
