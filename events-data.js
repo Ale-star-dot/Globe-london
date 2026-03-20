@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-03-19 05:55 UTC
+//  Last updated: 2026-03-20 05:47 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -8,6 +8,31 @@
 const GLOBE_EVENTS = [
   {
     id: 1,
+    type: "gallery",
+    category: "opening",
+    label: "Gallery Opening",
+    tag: "Gallery Opening",
+    tagClass: "tag-opening",
+    color: "#C8102E",
+    title: "Interview with artist Kat Anderson",
+    artist: "",
+    venue: "South London Gallery",
+    address: "South London Gallery, London",
+    neighbourhood: "southbank",
+    lat: 51.471, lng: -0.0643,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "The post  Interview with artist Kat Anderson  appeared first on  South London Gallery .",
+    url: "https://www.southlondongallery.org/journal/interview-with-kat-anderson",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 2,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -32,7 +57,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 2,
+    id: 3,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -57,7 +82,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 3,
+    id: 4,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -82,7 +107,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 4,
+    id: 5,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -107,7 +132,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 5,
+    id: 6,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -132,7 +157,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 6,
+    id: 7,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -157,7 +182,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 7,
+    id: 8,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -182,7 +207,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 8,
+    id: 9,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -207,7 +232,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 9,
+    id: 10,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -228,31 +253,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "The post  Who was the forgotten artist and theorist Emily Noyes Vanderpoel?  appeared first on  South London Gallery .",
     url: "https://www.southlondongallery.org/journal/who-was-the-forgotten-artist-and-theorist-emily-noyes-vanderpoel",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 10,
-    type: "gallery",
-    category: "opening",
-    label: "Gallery Opening",
-    tag: "Gallery Opening",
-    tagClass: "tag-opening",
-    color: "#C8102E",
-    title: "SLG returns to Frieze London 2025",
-    artist: "",
-    venue: "South London Gallery",
-    address: "South London Gallery, London",
-    neighbourhood: "southbank",
-    lat: 51.471, lng: -0.0643,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "The post  SLG returns to Frieze London 2025  appeared first on  South London Gallery .",
-    url: "https://www.southlondongallery.org/journal/slg-returns-to-frieze-london-2025",
     highlight: false,
     sponsored: false,
   },
