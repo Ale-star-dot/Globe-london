@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-03-25 05:58 UTC
+//  Last updated: 2026-03-26 06:09 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
