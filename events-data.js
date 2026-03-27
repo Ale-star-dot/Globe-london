@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-03-26 06:09 UTC
+//  Last updated: 2026-03-27 06:09 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -264,6 +264,31 @@ const GLOBE_EVENTS = [
     tag: "Exhibition",
     tagClass: "tag-exhibition",
     color: "#D4A020",
+    title: "SAATCHI GALLERY ANNOUNCES GARDEN WITH KINETIC ARTIST LUCY GREGORY, GARDEN DESIGNER NAOMI FERRETT-COHEN, AND SUPPORTER ING AT RHS CHELSEA FLOWER SHOW 2026",
+    artist: "",
+    venue: "Saatchi Gallery",
+    address: "Saatchi Gallery, London",
+    neighbourhood: "central-london",
+    lat: 51.4897, lng: -0.1594,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "London, UK; March 2026 \u2014 Saatchi Gallery is to present its garden at the RHS Chelsea Flower Show 2026 in collaboration with kinetic artist Lucy Gregory, garden designer Naomi Ferrett-Cohen, and supporter ING. Created for Saatchi Gallery\u2019s sixth collaboration with the internationally acclaimed RHS Ch",
+    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-announces-garden-with-kinetic-artist-lucy-gregory-garden-designer-naomi-ferrett-cohen-and-supporter-ing-at-rhs-chelsea-flower-show-2026?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-announces-garden-with-kinetic-artist-lucy-gregory-garden-designer-naomi-ferrett-cohen-and-supporter-ing-at-rhs-chelsea-flower-show-2026",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 12,
+    type: "exhibition",
+    category: "exhibition",
+    label: "Exhibition",
+    tag: "Exhibition",
+    tagClass: "tag-exhibition",
+    color: "#D4A020",
     title: "SAATCHI GALLERY PRESENTS FIRST GROUP TEXTILE ART EXHIBITION, TEXTILE ART REDEFINED",
     artist: "",
     venue: "Saatchi Gallery",
@@ -282,7 +307,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 12,
+    id: 13,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -307,7 +332,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 13,
+    id: 14,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -332,7 +357,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 14,
+    id: 15,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -357,7 +382,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 15,
+    id: 16,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -382,7 +407,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 16,
+    id: 17,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -407,7 +432,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 17,
+    id: 18,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -432,7 +457,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 18,
+    id: 19,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -457,7 +482,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 19,
+    id: 20,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -478,31 +503,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "From 22 November 2025, Saatchi Gallery will present the highly anticipated second edition of Standing on the Shoulders of Giants, featuring 10 contemporary Dutch female artists in collaboration with the V&#038;A. \n The post  SAATCHI GALLERY & THE V&A PRESENT THE SECOND EDITION OF ACCLAIMED DUTCH FEM",
     url: "https://www.saatchigallery.com/press/release/saatchi-gallery-the-va-present-the-second-edition-of-acclaimed-dutch-female-artists-exhibition-standing-on-the-shoulders-of-giants-ii-a-unique-dialogue-between-past-and-present?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-the-va-present-the-second-edition-of-acclaimed-dutch-female-artists-exhibition-standing-on-the-shoulders-of-giants-ii-a-unique-dialogue-between-past-and-present",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 20,
-    type: "exhibition",
-    category: "exhibition",
-    label: "Exhibition",
-    tag: "Exhibition",
-    tagClass: "tag-exhibition",
-    color: "#D4A020",
-    title: "SAATCHI GALLERY TO PRESENT THE LONG NOW, AN EXHIBITION EXPLORING THEMES PREVALENT THROUGH 40 YEARS OF CONTEMPORARY ART",
-    artist: "",
-    venue: "Saatchi Gallery",
-    address: "Saatchi Gallery, London",
-    neighbourhood: "central-london",
-    lat: 51.4897, lng: -0.1594,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "Celebrating four decades of ground-breaking contemporary art, Saatchi Gallery will open landmark exhibition, The Long Now on 5 November 2025, supported by De Beers. This expansive group show will showcase new works by iconic artists closely associated with the Gallery\u2019s dynamic history, alongside fr",
-    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-to-present-the-long-now-an-exhibition-exploring-themes-prevalant-through-40-years-of-contemporary-art?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-to-present-the-long-now-an-exhibition-exploring-themes-prevalant-through-40-years-of-contemporary-art",
     highlight: false,
     sponsored: false,
   }
