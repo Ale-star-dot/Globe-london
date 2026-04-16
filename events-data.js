@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-04-15 06:52 UTC
+//  Last updated: 2026-04-16 06:54 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -264,6 +264,31 @@ const GLOBE_EVENTS = [
     tag: "Exhibition",
     tagClass: "tag-exhibition",
     color: "#D4A020",
+    title: "SAATCHI GALLERY ANNOUNCES THE SUN AND THE MOON: ART INSPIRED BY THE CELESTIAL, A MAJOR SUMMER EXHIBITION EXPLORING HOW THESE OBJECTS IN THE SKY HAVE INFLUENCED ART, CULTURE AND HUMAN IMAGINATION, SUPPORTED BY CAZENOVE CAPITAL",
+    artist: "",
+    venue: "Saatchi Gallery",
+    address: "Saatchi Gallery, London",
+    neighbourhood: "central-london",
+    lat: 51.4897, lng: -0.1594,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "This summer, Saatchi Gallery presents The Sun and The Moon: Art Inspired by the Celestial, a major exhibition exploring how the two most powerful and enduring phenomena in the sky have inspired creativity, curiosity and belief throughout human history and across different cultures. Supported by head",
+    url: "https://www.saatchigallery.com/press/release/the-sun-and-the-moon-press-page?utm_source=rss&utm_medium=rss&utm_campaign=the-sun-and-the-moon-press-page",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 12,
+    type: "exhibition",
+    category: "exhibition",
+    label: "Exhibition",
+    tag: "Exhibition",
+    tagClass: "tag-exhibition",
+    color: "#D4A020",
     title: "SAATCHI GALLERY ANNOUNCES GARDEN WITH KINETIC ARTIST LUCY GREGORY, GARDEN DESIGNER NAOMI FERRETT-COHEN, AND SUPPORTER ING AT RHS CHELSEA FLOWER SHOW 2026",
     artist: "",
     venue: "Saatchi Gallery",
@@ -282,7 +307,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 12,
+    id: 13,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -307,7 +332,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 13,
+    id: 14,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -332,7 +357,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 14,
+    id: 15,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -357,7 +382,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 15,
+    id: 16,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -382,7 +407,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 16,
+    id: 17,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -407,7 +432,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 17,
+    id: 18,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -432,7 +457,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 18,
+    id: 19,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -457,7 +482,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 19,
+    id: 20,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -478,31 +503,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "FUTURESPECTIVE is an initiative by Vogue Ukraine in partnership with PhotoVogue, aimed to support and promote Ukrainian photographers on the international scene. The debut exhibition features works by 34 talents across genres and formats \u2014 from documentary and fine-art photography to still life, lan",
     url: "https://www.saatchigallery.com/press/release/vogue-ukraine-presents-futurespective-an-exhibition-of-contemporary-ukrainian-photography-at-the-saatchi-gallery-in-london?utm_source=rss&utm_medium=rss&utm_campaign=vogue-ukraine-presents-futurespective-an-exhibition-of-contemporary-ukrainian-photography-at-the-saatchi-gallery-in-london",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 20,
-    type: "exhibition",
-    category: "exhibition",
-    label: "Exhibition",
-    tag: "Exhibition",
-    tagClass: "tag-exhibition",
-    color: "#D4A020",
-    title: "SAATCHI GALLERY & THE V&A PRESENT THE SECOND EDITION OF ACCLAIMED DUTCH FEMALE ARTISTS EXHIBITION, STANDING ON THE SHOULDERS OF GIANTS II: A UNIQUE DIALOGUE BETWEEN PAST AND PRESENT",
-    artist: "",
-    venue: "Saatchi Gallery",
-    address: "Saatchi Gallery, London",
-    neighbourhood: "central-london",
-    lat: 51.4897, lng: -0.1594,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "From 22 November 2025, Saatchi Gallery will present the highly anticipated second edition of Standing on the Shoulders of Giants, featuring 10 contemporary Dutch female artists in collaboration with the V&#038;A. \n The post  SAATCHI GALLERY & THE V&A PRESENT THE SECOND EDITION OF ACCLAIMED DUTCH FEM",
-    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-the-va-present-the-second-edition-of-acclaimed-dutch-female-artists-exhibition-standing-on-the-shoulders-of-giants-ii-a-unique-dialogue-between-past-and-present?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-the-va-present-the-second-edition-of-acclaimed-dutch-female-artists-exhibition-standing-on-the-shoulders-of-giants-ii-a-unique-dialogue-between-past-and-present",
     highlight: false,
     sponsored: false,
   }
