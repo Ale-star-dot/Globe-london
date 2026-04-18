@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-04-17 06:55 UTC
+//  Last updated: 2026-04-18 06:10 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -8,6 +8,31 @@
 const GLOBE_EVENTS = [
   {
     id: 1,
+    type: "performance",
+    category: "performance",
+    label: "Performance",
+    tag: "Performance",
+    tagClass: "tag-performance",
+    color: "#6B3FA0",
+    title: "Shortwave: A New Sound and Performance Festival",
+    artist: "",
+    venue: "South London Gallery",
+    address: "South London Gallery, London",
+    neighbourhood: "southbank",
+    lat: 51.471, lng: -0.0643,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "The post  Shortwave: A New Sound and Performance Festival  appeared first on  South London Gallery .",
+    url: "https://www.southlondongallery.org/journal/shortwave-a-new-sound-and-performance-festival",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 2,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -32,7 +57,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 2,
+    id: 3,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -57,7 +82,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 3,
+    id: 4,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -82,7 +107,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 4,
+    id: 5,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -107,7 +132,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 5,
+    id: 6,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -132,7 +157,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 6,
+    id: 7,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -157,7 +182,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 7,
+    id: 8,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -182,7 +207,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 8,
+    id: 9,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -207,7 +232,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 9,
+    id: 10,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -228,31 +253,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "The post  The SLG announces its upcoming programme for 2026  appeared first on  South London Gallery .",
     url: "https://www.southlondongallery.org/journal/2026-exhibitions",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 10,
-    type: "gallery",
-    category: "opening",
-    label: "Gallery Opening",
-    tag: "Gallery Opening",
-    tagClass: "tag-opening",
-    color: "#C8102E",
-    title: "Who was the forgotten artist and theorist Emily Noyes Vanderpoel?",
-    artist: "",
-    venue: "South London Gallery",
-    address: "South London Gallery, London",
-    neighbourhood: "southbank",
-    lat: 51.471, lng: -0.0643,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "The post  Who was the forgotten artist and theorist Emily Noyes Vanderpoel?  appeared first on  South London Gallery .",
-    url: "https://www.southlondongallery.org/journal/who-was-the-forgotten-artist-and-theorist-emily-noyes-vanderpoel",
     highlight: false,
     sponsored: false,
   },
