@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-06-08 09:19 UTC
+//  Last updated: 2026-06-09 08:28 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -8,6 +8,31 @@
 const GLOBE_EVENTS = [
   {
     id: 1,
+    type: "gallery",
+    category: "opening",
+    label: "Gallery Opening",
+    tag: "Gallery Opening",
+    tagClass: "tag-opening",
+    color: "#C8102E",
+    title: "New Limited Edition by Oscar Murillo with LITO",
+    artist: "",
+    venue: "South London Gallery",
+    address: "South London Gallery, London",
+    neighbourhood: "southbank",
+    lat: 51.471, lng: -0.0643,
+    time: "See website",
+    date: "Today",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "The post  New Limited Edition by Oscar Murillo with LITO  appeared first on  South London Gallery .",
+    url: "https://www.southlondongallery.org/journal/new-limited-edition-by-oscar-murillo-with-lito",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 2,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -32,7 +57,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 2,
+    id: 3,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -57,7 +82,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 3,
+    id: 4,
     type: "performance",
     category: "performance",
     label: "Performance",
@@ -82,7 +107,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 4,
+    id: 5,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -107,7 +132,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 5,
+    id: 6,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -132,7 +157,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 6,
+    id: 7,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -157,7 +182,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 7,
+    id: 8,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -182,7 +207,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 8,
+    id: 9,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -207,7 +232,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 9,
+    id: 10,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -228,31 +253,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "The post  Highlights from the Colecci\u00f3n Jumex, Mexico City  appeared first on  South London Gallery .",
     url: "https://www.southlondongallery.org/journal/highlights-from-the-coleccion-jumex-mexico-city",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 10,
-    type: "gallery",
-    category: "opening",
-    label: "Gallery Opening",
-    tag: "Gallery Opening",
-    tagClass: "tag-opening",
-    color: "#C8102E",
-    title: "Meet South London Louie\u2019s Head Chef, Daniela Natale",
-    artist: "",
-    venue: "South London Gallery",
-    address: "South London Gallery, London",
-    neighbourhood: "southbank",
-    lat: 51.471, lng: -0.0643,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "The post  Meet South London Louie&#8217;s Head Chef, Daniela Natale  appeared first on  South London Gallery .",
-    url: "https://www.southlondongallery.org/journal/meet-south-london-louies-head-chef-daniela-natale",
     highlight: false,
     sponsored: false,
   },
