@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-06-09 08:28 UTC
+//  Last updated: 2026-06-10 08:44 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -21,7 +21,7 @@ const GLOBE_EVENTS = [
     neighbourhood: "southbank",
     lat: 51.471, lng: -0.0643,
     time: "See website",
-    date: "Today",
+    date: "On Now",
     price: "Free entry",
     priceDisplay: "Free entry",
     priceNum: 0,
