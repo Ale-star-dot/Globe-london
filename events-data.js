@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-09-22 09:35 UTC
+//  Last updated: 2026-09-23 09:41 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -258,6 +258,31 @@ const GLOBE_EVENTS = [
   },
   {
     id: 11,
+    type: "gallery",
+    category: "opening",
+    label: "Gallery Opening",
+    tag: "Gallery Opening",
+    tagClass: "tag-opening",
+    color: "#C8102E",
+    title: "BEYOND THE STREETS, one of the world\u2019s most influential contemporary platforms, launches an all new exhibition dedicated to street culture",
+    artist: "",
+    venue: "Saatchi Gallery",
+    address: "Saatchi Gallery, London",
+    neighbourhood: "central-london",
+    lat: 51.4897, lng: -0.1594,
+    time: "See website",
+    date: "Today",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "BEYOND THE STREETS, one of the world's most influential contemporary platforms, launches an all new exhibition dedicated to street culture. \n The post  BEYOND THE STREETS, one of the world\u2019s most influential contemporary platforms, launches an all new exhibition dedicated to street culture  first ap",
+    url: "https://www.saatchigallery.com/press/release/beyond-the-streets-one-of-the-worlds-most-influential-contemporary-platforms-launches-an-all-new-exhibition-dedicated-to-street-culture?utm_source=rss&utm_medium=rss&utm_campaign=beyond-the-streets-one-of-the-worlds-most-influential-contemporary-platforms-launches-an-all-new-exhibition-dedicated-to-street-culture",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 12,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -282,7 +307,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 12,
+    id: 13,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -307,7 +332,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 13,
+    id: 14,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -332,7 +357,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 14,
+    id: 15,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -357,7 +382,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 15,
+    id: 16,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -382,7 +407,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 16,
+    id: 17,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -407,7 +432,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 17,
+    id: 18,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -432,7 +457,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 18,
+    id: 19,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -457,7 +482,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 19,
+    id: 20,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -478,31 +503,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "Gesture and Being brings together new work from six recent graduates of Royal College of Art and the Slade School of Fine Art: Anna Curzon Price, Gala Hills, Katja Farin, Mia Wilkinson, Poppy Critchlow and Qian Zhong. \n The post  SAATCHI GALLERY PRESENTS ANNA LIBER LEWIS: SPECTRAL INTERFERENCE  firs",
     url: "https://www.saatchigallery.com/press/release/saatchi-gallery-presents-spectral-interference?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-presents-spectral-interference",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 20,
-    type: "exhibition",
-    category: "exhibition",
-    label: "Exhibition",
-    tag: "Exhibition",
-    tagClass: "tag-exhibition",
-    color: "#D4A020",
-    title: "SAATCHI GALLERY PRESENTS NEW GRADUATE EXHIBITION, GESTURE & BEING",
-    artist: "",
-    venue: "Saatchi Gallery",
-    address: "Saatchi Gallery, London",
-    neighbourhood: "central-london",
-    lat: 51.4897, lng: -0.1594,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "Gesture and Being brings together new work from six recent graduates of Royal College of Art and the Slade School of Fine Art: Anna Curzon Price, Gala Hills, Katja Farin, Mia Wilkinson, Poppy Critchlow and Qian Zhong. \n The post  SAATCHI GALLERY PRESENTS NEW GRADUATE EXHIBITION, GESTURE & BEING  fir",
-    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-presents-graduate-exhibition-gesture-being?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-presents-graduate-exhibition-gesture-being",
     highlight: false,
     sponsored: false,
   }
