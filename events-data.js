@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-10-28 10:55 UTC
+//  Last updated: 2026-10-29 11:13 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -214,7 +214,7 @@ const GLOBE_EVENTS = [
     tag: "Exhibition",
     tagClass: "tag-exhibition",
     color: "#D4A020",
-    title: "Pierre Alechinksy",
+    title: "Pierre Alechinsky",
     artist: "",
     venue: "Serpentine",
     address: "Serpentine, London",
@@ -226,7 +226,7 @@ const GLOBE_EVENTS = [
     priceDisplay: "Free entry",
     priceNum: 0,
     bookingType: "free",
-    description: "In celebration of a radical and experimental artist, explore Pierre Alechinsky\u2019s graphically rich and exuberant body of paintings and works on paper. \n The post  Pierre Alechinksy  appeared first on  Serpentine Galleries .",
+    description: "In celebration of a radical and experimental artist, explore Pierre Alechinsky\u2019s graphically rich and exuberant body of paintings and works on paper. \n The post  Pierre Alechinsky  appeared first on  Serpentine Galleries .",
     url: "https://www.serpentinegalleries.org/whats-on/pierre-alechinksy/",
     highlight: false,
     sponsored: false,
