@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-11-14 11:53 UTC
+//  Last updated: 2026-11-15 12:25 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -8,31 +8,6 @@
 const GLOBE_EVENTS = [
   {
     id: 1,
-    type: "talk",
-    category: "talk",
-    label: "Artist Talk",
-    tag: "Artist Talk",
-    tagClass: "tag-talk",
-    color: "#2A5BAD",
-    title: "Saturday Talks: Natalia Grabowska on Justin Caguiat: Change Ringing",
-    artist: "",
-    venue: "Serpentine",
-    address: "Serpentine, London",
-    neighbourhood: "west-end",
-    lat: 51.5053, lng: -0.1759,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "Natalia Grabowska, Curator at Large, Architecture and Site-Specific Projects, leads a tour of Justin Caguiat: Change Ringing. \n The post  Saturday Talks: Natalia Grabowska on Justin Caguiat: Change Ringing  appeared first on  Serpentine Galleries .",
-    url: "https://www.serpentinegalleries.org/whats-on/saturday-talks-natalia-grabowska-on-justin-caguiat-change-ringing/",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 2,
     type: "performance",
     category: "performance",
     label: "Performance",
@@ -57,7 +32,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 3,
+    id: 2,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -82,7 +57,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 4,
+    id: 3,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -107,7 +82,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 5,
+    id: 4,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -132,7 +107,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 6,
+    id: 5,
     type: "talk",
     category: "talk",
     label: "Artist Talk",
@@ -157,7 +132,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 7,
+    id: 6,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -182,7 +157,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 8,
+    id: 7,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -207,7 +182,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 9,
+    id: 8,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -228,6 +203,31 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "In celebration of a radical and experimental artist, explore Pierre Alechinsky\u2019s graphically rich and exuberant body of paintings and works on paper. \n The post  Pierre Alechinsky: In Paperland  appeared first on  Serpentine Galleries .",
     url: "https://www.serpentinegalleries.org/whats-on/pierre-alechinksy/",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 9,
+    type: "exhibition",
+    category: "exhibition",
+    label: "Exhibition",
+    tag: "Exhibition",
+    tagClass: "tag-exhibition",
+    color: "#D4A020",
+    title: "Matt Copson",
+    artist: "",
+    venue: "Serpentine",
+    address: "Serpentine, London",
+    neighbourhood: "west-end",
+    lat: 51.5053, lng: -0.1759,
+    time: "See website",
+    date: "On Now",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "Step into Matt Copson\u2019s first major solo exhibition in the UK at Serpentine North. Discover Copson\u2019s celebrated work, spanning laser animation, sculpture, animatronics and sound.  \n The post  Matt Copson  appeared first on  Serpentine Galleries .",
+    url: "https://www.serpentinegalleries.org/whats-on/matt-copson/",
     highlight: false,
     sponsored: false,
   },
