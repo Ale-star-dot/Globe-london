@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-11-15 12:25 UTC
+//  Last updated: 2026-11-16 13:18 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -239,6 +239,31 @@ const GLOBE_EVENTS = [
     tag: "Gallery Opening",
     tagClass: "tag-opening",
     color: "#C8102E",
+    title: "Margot Heller to step down as Director of the South London Gallery in spring 2027",
+    artist: "",
+    venue: "South London Gallery",
+    address: "South London Gallery, London",
+    neighbourhood: "southbank",
+    lat: 51.471, lng: -0.0643,
+    time: "See website",
+    date: "Today",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "The post  Margot Heller to step down as Director of the South London Gallery in spring 2027  appeared first on  South London Gallery .",
+    url: "https://www.southlondongallery.org/journal/margot-heller-to-step-down",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 11,
+    type: "gallery",
+    category: "opening",
+    label: "Gallery Opening",
+    tag: "Gallery Opening",
+    tagClass: "tag-opening",
+    color: "#C8102E",
     title: "Weight Of Matter: In Conversation",
     artist: "",
     venue: "South London Gallery",
@@ -257,7 +282,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 11,
+    id: 12,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -282,7 +307,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 12,
+    id: 13,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -307,7 +332,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 13,
+    id: 14,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -332,7 +357,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 14,
+    id: 15,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -357,7 +382,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 15,
+    id: 16,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -382,7 +407,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 16,
+    id: 17,
     type: "performance",
     category: "performance",
     label: "Performance",
@@ -407,7 +432,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 17,
+    id: 18,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -432,7 +457,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 18,
+    id: 19,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -453,31 +478,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "The post  Interview with artist Manuel Hernandez Rivera  appeared first on  South London Gallery .",
     url: "https://www.southlondongallery.org/journal/interview-with-artist-manuel-hernandez-rivera",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 19,
-    type: "gallery",
-    category: "opening",
-    label: "Gallery Opening",
-    tag: "Gallery Opening",
-    tagClass: "tag-opening",
-    color: "#C8102E",
-    title: "Interview with artist Maya Silverberg",
-    artist: "",
-    venue: "South London Gallery",
-    address: "South London Gallery, London",
-    neighbourhood: "southbank",
-    lat: 51.471, lng: -0.0643,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "The post  Interview with artist Maya Silverberg  appeared first on  South London Gallery .",
-    url: "https://www.southlondongallery.org/journal/interview-with-artist-maya-silverberg",
     highlight: false,
     sponsored: false,
   },
