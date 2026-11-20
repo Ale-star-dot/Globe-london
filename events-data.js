@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-11-19 14:03 UTC
+//  Last updated: 2026-11-20 13:46 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -483,6 +483,31 @@ const GLOBE_EVENTS = [
   },
   {
     id: 20,
+    type: "exhibition",
+    category: "exhibition",
+    label: "Exhibition",
+    tag: "Exhibition",
+    tagClass: "tag-exhibition",
+    color: "#D4A020",
+    title: "Saatchi Gallery presents Deadly Prey: The Art of Ghana\u2019s Mobile Cinema",
+    artist: "",
+    venue: "Saatchi Gallery",
+    address: "Saatchi Gallery, London",
+    neighbourhood: "central-london",
+    lat: 51.4897, lng: -0.1594,
+    time: "See website",
+    date: "Today",
+    price: "Free entry",
+    priceDisplay: "Free entry",
+    priceNum: 0,
+    bookingType: "free",
+    description: "Saatchi Gallery presents Deadly Prey: The Art of Ghana\u2019s Mobile Cinema, a celebration of Ghana\u2019s hand-painted movie poster tradition \n The post  Saatchi Gallery presents Deadly Prey: The Art of Ghana\u2019s Mobile Cinema  first appeared on  Saatchi Gallery .",
+    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-presents-deadly-prey-the-art-of-ghanas-mobile-cinema?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-presents-deadly-prey-the-art-of-ghanas-mobile-cinema",
+    highlight: false,
+    sponsored: false,
+  },
+  {
+    id: 21,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -507,7 +532,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 21,
+    id: 22,
     type: "gallery",
     category: "opening",
     label: "Gallery Opening",
@@ -532,7 +557,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 22,
+    id: 23,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -557,7 +582,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 23,
+    id: 24,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -582,7 +607,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 24,
+    id: 25,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -607,7 +632,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 25,
+    id: 26,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -632,7 +657,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 26,
+    id: 27,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -657,7 +682,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 27,
+    id: 28,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -682,7 +707,7 @@ const GLOBE_EVENTS = [
     sponsored: false,
   },
   {
-    id: 28,
+    id: 29,
     type: "exhibition",
     category: "exhibition",
     label: "Exhibition",
@@ -703,31 +728,6 @@ const GLOBE_EVENTS = [
     bookingType: "free",
     description: "Textile Art Redefined explores the innovation and creativity of contemporary fine art textiles. Showcasing work by more than 15 visionary artists, the exhibition both celebrates the vibrancy of textile art today and expands the very definition. \n The post  SAATCHI GALLERY PRESENTS FIRST GROUP TEXTIL",
     url: "https://www.saatchigallery.com/press/release/saatchi-gallery-presents-first-group-textile-art-exhibition-textile-art-redefined?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-presents-first-group-textile-art-exhibition-textile-art-redefined",
-    highlight: false,
-    sponsored: false,
-  },
-  {
-    id: 29,
-    type: "exhibition",
-    category: "exhibition",
-    label: "Exhibition",
-    tag: "Exhibition",
-    tagClass: "tag-exhibition",
-    color: "#D4A020",
-    title: "SAATCHI GALLERY PRESENTS CAROLINE WONG: GIRLS WHO DEVOUR",
-    artist: "",
-    venue: "Saatchi Gallery",
-    address: "Saatchi Gallery, London",
-    neighbourhood: "central-london",
-    lat: 51.4897, lng: -0.1594,
-    time: "See website",
-    date: "On Now",
-    price: "Free entry",
-    priceDisplay: "Free entry",
-    priceNum: 0,
-    bookingType: "free",
-    description: "This exhibition brings together interconnected bodies of work by London-based British-Malaysian-Chinese artist Caroline Wong. Across pastel drawings and mixed-media paintings, Wong explores femininity, appetite, desire, and excess through scenes of convivial consumption and intimate female gathering",
-    url: "https://www.saatchigallery.com/press/release/saatchi-gallery-presents-caroline-wong-girls-who-devour?utm_source=rss&utm_medium=rss&utm_campaign=saatchi-gallery-presents-caroline-wong-girls-who-devour",
     highlight: false,
     sponsored: false,
   }
