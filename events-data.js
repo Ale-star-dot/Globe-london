@@ -1,6 +1,6 @@
 // ─────────────────────────────────────────────────────────────────
 //  Globe — Auto-generated Events Data
-//  Last updated: 2026-11-20 13:46 UTC
+//  Last updated: 2026-11-21 13:11 UTC
 //  Source: Eventbrite · Designmynight · Time Out · Resident Advisor
 //  DO NOT EDIT MANUALLY — this file is overwritten daily
 // ─────────────────────────────────────────────────────────────────
@@ -496,7 +496,7 @@ const GLOBE_EVENTS = [
     neighbourhood: "central-london",
     lat: 51.4897, lng: -0.1594,
     time: "See website",
-    date: "Today",
+    date: "On Now",
     price: "Free entry",
     priceDisplay: "Free entry",
     priceNum: 0,
